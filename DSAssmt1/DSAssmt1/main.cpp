@@ -12,14 +12,8 @@
 #include <math.h>
 #include <array>
 #include "LinkedList.hpp"
-//#include <cstdio>
 
 using namespace std;
-
-
-
-
-
 
 
 //regex will be ^[a-zA-Z](-[0-9]+)+$
@@ -69,13 +63,18 @@ int main(int argc, const char * argv[])
     while (!quit)
     {
     
-    cout << list << endl;
-//    list.outputWithNums(list);
-//    list.GetNth(list, 3);
-    
-    
-    cout << "Currently at line number 1: " << endl;
-    cin >> input;
+        cout << list << endl;
+        
+        
+        cout << "Currently at line number 1: " << endl;
+        cin >> input;
+        while(!regex_match(input, r)){
+            cout << "Please key in a proper sequence: \n" << endl;
+            cin.clear();
+            cin.ignore(256, '\n');
+            cin >> input;
+            cout << "\n";
+        }
         if (input[0] == 'Q' || input[0] == 'q')
         {
             return 0;
@@ -92,118 +91,83 @@ int main(int argc, const char * argv[])
             return 0;
         }
         
-    while(!regex_match(input, r)){
-        cout << "Please key in a proper sequence: \n" << endl;
-        cin.clear();
-        cin.ignore(256, '\n');
-        cin >> input;
-        cout << "\n";
-    }
+    
     
     
     //methods to get numbers from input
-    int numberOfNumbers = list.numOfNums(input);
-    
-    if (numberOfNumbers == 1)
-    {
-        int ind2 = list.getNumDigits(input);
-        firstNum = list.oneNum(input, ind2);
-        cout << "the number is " << firstNum << endl;
-        
-        
-    }
-    else
-    {
-        firstNum = list.getNum1(input);
-        int ind = list.GetNumberOfDigits(firstNum) + 2;
-        secondNum = list.getNum2(input, ind);
-        cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
-    }
-    
-    
-    
-    if (input[0] == 'i' || input[0] == 'I')
-    {
-        string userLine;
-        
-        cout << "Please key in the line you would like to insert: " << endl;
-        cin.clear();
-        cin.ignore(256, '\n');
-        getline(cin, userLine);
+        int numberOfNumbers = list.numOfNums(input);
         
         if (numberOfNumbers == 1)
         {
-            list.addNodeAtPos(userLine, firstNum-1);
-            
-            cout << endl;
-            
-//            cout << list << endl;
-        }
-    }
-    
-    if (input[0] == 'd' || input[0] == 'D')
-    {
-        if (firstNum == 0)
-        {
-            list.DeleteNode(0);
-        }
-        else if (secondNum == 0)
-        {
-            list.DeleteNode(firstNum);
+            int ind2 = list.getNumDigits(input);
+            firstNum = list.oneNum(input, ind2);
+            cout << "the number is " << firstNum << endl;
+        
+        
         }
         else
         {
-            int range = secondNum - firstNum;
-            for (int i = 0; i <= range; i++)
-            {
-                list.DeleteNode(firstNum);
-            }
-                
+            firstNum = list.getNum1(input);
+            int ind = list.GetNumberOfDigits(firstNum) + 2;
+            secondNum = list.getNum2(input, ind);
+            cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
         }
-    }
+        
+        
+        
+        if (input[0] == 'i' || input[0] == 'I')
+        {
+            string userLine;
+        
+            cout << "Please key in the line you would like to insert: " << endl;
+            cin.clear();
+            cin.ignore(256, '\n');
+            getline(cin, userLine);
+        
+            if (numberOfNumbers == 1)
+            {
+                list.addNodeAtPos(userLine, firstNum-1);
+            
+                cout << endl;
+            
+//            cout << list << endl;
+            }
+        }
     
-    if (input[0] == 'v' || input[0] == 'V')
-    {
-        cout << list << endl;
-        
-    }
+        if (input[0] == 'd' || input[0] == 'D')
+        {
+            if (firstNum == 0)
+            {
+                list.DeleteNode(0);
+            }
+            else if (secondNum == 0)
+            {
+            list.DeleteNode(firstNum);
+            }
+            else
+            {
+                int range = secondNum - firstNum;
+                for (int i = 0; i <= range; i++)
+                {
+                    list.DeleteNode(firstNum);
+                }
+                
+            }
+        }
     
-    if (input[0] == 'g' || input[0] == 'G')
-    {
-        cout << list << endl;
+        if (input[0] == 'v' || input[0] == 'V')
+        {
+            cout << list << endl;
         
-    }
-        
-        
-        
+        }
     
+        if (input[0] == 'g' || input[0] == 'G')
+        {
+            cout << list << endl;
         
-    
-    
+        }
         
-//    cout << "This is the original text file printed:\n" << endl;
-//    
-//    ifstream infile1;
-//    infile1.open (argv[1]);
-//    while(!infile1.eof())
-//    {
-//        getline(infile1,STRING);
-//        cout<<STRING<<endl;
-//    }
-//    infile1.close();
-    
-    cout << "This is the new text file printed:\n" << endl;
 
-    ifstream infile2;
-    infile2.open (argv[2]);
-    while(!infile2.eof())
-    {
-        getline(infile2,STRING);
-        cout<<STRING<<endl;
-    }
-    infile2.close();
-        
-        
     }
 
     
