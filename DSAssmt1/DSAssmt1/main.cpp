@@ -181,16 +181,16 @@ int main(int argc, const char * argv[])
     
     
         
-    cout << "This is the original text file printed:\n" << endl;
-    
-    ifstream infile1;
-    infile1.open (argv[1]);
-    while(!infile1.eof())
-    {
-        getline(infile1,STRING);
-        cout<<STRING<<endl;
-    }
-    infile1.close();
+//    cout << "This is the original text file printed:\n" << endl;
+//    
+//    ifstream infile1;
+//    infile1.open (argv[1]);
+//    while(!infile1.eof())
+//    {
+//        getline(infile1,STRING);
+//        cout<<STRING<<endl;
+//    }
+//    infile1.close();
     
     cout << "This is the new text file printed:\n" << endl;
 
