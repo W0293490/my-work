@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AB34ABD11E3241BD000944B7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB34ABD01E3241BD000944B7 /* main.cpp */; };
 		AB34ABEC1E35452A000944B7 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB34ABEA1E35452A000944B7 /* LinkedList.cpp */; };
+		AB4C30951E3AB59B00C4AD48 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB4C30931E3AB59B00C4AD48 /* Parser.cpp */; };
+		AB4C30981E3AB86000C4AD48 /* FileHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB4C30961E3AB86000C4AD48 /* FileHandler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,10 @@
 		AB34ABD01E3241BD000944B7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AB34ABEA1E35452A000944B7 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedList.cpp; sourceTree = "<group>"; };
 		AB34ABEB1E35452A000944B7 /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
+		AB4C30931E3AB59B00C4AD48 /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		AB4C30941E3AB59B00C4AD48 /* Parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
+		AB4C30961E3AB86000C4AD48 /* FileHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileHandler.cpp; sourceTree = "<group>"; };
+		AB4C30971E3AB86000C4AD48 /* FileHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileHandler.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,10 @@
 				AB34ABD01E3241BD000944B7 /* main.cpp */,
 				AB34ABEA1E35452A000944B7 /* LinkedList.cpp */,
 				AB34ABEB1E35452A000944B7 /* LinkedList.hpp */,
+				AB4C30931E3AB59B00C4AD48 /* Parser.cpp */,
+				AB4C30941E3AB59B00C4AD48 /* Parser.hpp */,
+				AB4C30961E3AB86000C4AD48 /* FileHandler.cpp */,
+				AB4C30971E3AB86000C4AD48 /* FileHandler.hpp */,
 			);
 			path = DSAssmt1;
 			sourceTree = "<group>";
@@ -124,6 +134,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB34ABEC1E35452A000944B7 /* LinkedList.cpp in Sources */,
+				AB4C30951E3AB59B00C4AD48 /* Parser.cpp in Sources */,
+				AB4C30981E3AB86000C4AD48 /* FileHandler.cpp in Sources */,
 				AB34ABD11E3241BD000944B7 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
