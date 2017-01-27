@@ -53,6 +53,9 @@ int main(int argc, const char * argv[])
     //enter program loop:
     while (!quit)
     {
+        //initialize numbers to zero for next input:
+        firstNum = 0;
+        secondNum = 0;
         //display the lines, prompt with line number, validate input:
         cout << list << endl;
         
@@ -156,6 +159,16 @@ int main(int argc, const char * argv[])
             cout << list << endl;
         
         }
+        
+        
+        if (input[0] == 'l' || input[0] == 'L')
+        {
+            list.displayLines(firstNum, secondNum);
+            cout << endl;
+            
+        }
+        
+        
     }
     
     return 0;

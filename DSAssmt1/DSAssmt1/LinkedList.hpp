@@ -156,9 +156,87 @@ public:
         }
     }
     
+    void displayLine(int num)
+    {
+        Node *nodePtr;
+        nodePtr = first;
+        
+        for (int i = 1; i < num; i++)
+        {
+            nodePtr = nodePtr->next;
+        }
+        cout << nodePtr->data << endl;
+        
+    }
+    
+    
+    void displayLines(int num1, int num2)
+    {
+        Node *nodePtr;
+        nodePtr = first;
+        int index;
+        
+        if (num2 == 0)
+        {
+            for (int i = 1; i < num1; i++)
+            {
+                nodePtr = nodePtr->next;
+            }
+            cout << nodePtr->data << endl;
+        }
+        else
+        {
+            index = num2 - num1;
+        
+        for (int i = 1; i < num1; i++)
+        {
+            nodePtr = nodePtr->next;
+        }
+        for (int i = 0; i <= index; i++)
+        {
+            cout << nodePtr->data << endl;
+            nodePtr = nodePtr->next;
+        }
+        
+//        cout << nodePtr->data << endl;
+        }
+        
+        
+    }
+
+    
+//    string getLine(LinkedList& list, Node index)
+//    {
+//        string line;
+//        index = *list.first;
+//        
+//        
+//            line = index.data;
+//            
+//            index = *index.next;
+//        
+//        
+//        return line;
+//    }
+    
     
     friend ostream& operator<<(ostream& output, LinkedList& list);
-
+    
+    string getLine(LinkedList& list)
+    {
+        string output;
+        Node *currNode = list.first;
+        
+        while (currNode != NULL)
+        {
+            output = currNode->data;
+            
+            currNode = currNode->next;
+        }
+        
+        return output;
+    }
+    
     
 };
 
@@ -175,6 +253,8 @@ ostream& operator<<(ostream& output, LinkedList& list)
     
     return output;
 }
+
+
 
 
 #endif /* LinkedList_hpp */
