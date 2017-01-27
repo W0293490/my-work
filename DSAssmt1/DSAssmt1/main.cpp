@@ -12,6 +12,8 @@
 #include <math.h>
 #include <array>
 #include "LinkedList.hpp"
+#include "Parser.hpp"
+#include "FileHandler.cpp"
 
 using namespace std;
 
@@ -28,88 +30,82 @@ int main(int argc, const char * argv[])
     string STRING;
     char input[20];
     LinkedList list;
+    Parser parser;
+    FileHandler fileHandler;
     bool quit = false;
+    int bufferLine = 1;
     
-    
-    //read file
+    //validate args, read and write file to list:
     if (argc != 3)
     {
         cout << "You must provide two arguments (an input file and an output file)." << endl;
         return -1;
     }
-    try
+
+    ifstream stream = fileHandler.readFile(argv[1]);
+    
+    string line;
+    while (getline(stream,line))
     {
-        ifstream f(argv[1]);
-        
-        if(!f)
-        {
-            cout << "ERROR: Cannot open file!" << endl;
-            exit(1);
-        }
-        string line;
-        
-        
-        while (getline(f,line))
-        {
-            list.Add(line);
-        }
-    }
-    catch(const exception& ex)
-    {
-        cout << "Exception: '" << ex.what() << "'!" << endl;
-        exit(1);
+        list.Add(line);
     }
     
+    //enter program loop:
     while (!quit)
     {
-    
+        //display the lines, prompt with line number, validate input:
         cout << list << endl;
         
-        
-        cout << "Currently at line number 1: " << endl;
+        cout << "Currently at line number " << bufferLine << ": " << endl;
         cin >> input;
+        
+        //quit:
+        if (input[0] == 'Q' || input[0] == 'q')
+        {
+            return 0;
+        }
+        
+        //quit and save file:
+        if (input[0] == 'E' || input[0] == 'e')
+        {
+            ofstream myFile = fileHandler.writeFile(argv[2]);
+            
+            myFile << list;
+            
+            return 0;
+        }
+        
+        //show list:
+        if (input[0] == 'v' || input[0] == 'V')
+        {
+            cout << list << endl;
+        }
+        
+        
         while(!regex_match(input, r)){
+            
             cout << "Please key in a proper sequence: \n" << endl;
             cin.clear();
             cin.ignore(256, '\n');
             cin >> input;
             cout << "\n";
         }
-        if (input[0] == 'Q' || input[0] == 'q')
-        {
-            return 0;
-        }
         
-        if (input[0] == 'E' || input[0] == 'e')
-        {
-            //writing list to new text file
-            ofstream myfile;
-            myfile.open (argv[2]);
-            myfile << list;
-            myfile.close();
-            
-            return 0;
-        }
-        
-    
-    
     
     //methods to get numbers from input
-        int numberOfNumbers = list.numOfNums(input);
+        int numberOfNumbers = parser.numOfNums(input);
         
         if (numberOfNumbers == 1)
         {
-            int ind2 = list.getNumDigits(input);
-            firstNum = list.oneNum(input, ind2);
+            int ind2 = parser.getNumDigitsInArray(input);
+            firstNum = parser.getNumberWhenOnlyOne(input, ind2);
             cout << "the number is " << firstNum << endl;
-        
-        
         }
         else
         {
-            firstNum = list.getNum1(input);
-            int ind = list.GetNumberOfDigits(firstNum) + 2;
-            secondNum = list.getNum2(input, ind);
+            firstNum = parser.getNum1(input);
+            int ind = parser.GetNumberOfDigits(firstNum) + 2;
+            secondNum = parser.getNum2(input, ind);
             cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
         }
         
@@ -160,16 +156,7 @@ int main(int argc, const char * argv[])
             cout << list << endl;
         
         }
-    
-        if (input[0] == 'g' || input[0] == 'G')
-        {
-            cout << list << endl;
-        
-        }
-        
-
     }
-
     
     return 0;
 }
