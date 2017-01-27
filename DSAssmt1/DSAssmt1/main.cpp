@@ -131,6 +131,14 @@ int main(int argc, const char * argv[])
             
 //            cout << list << endl;
             }
+            if (numberOfNumbers == 0)
+            {
+                list.addNodeAtPos(userLine, bufferLine);
+                
+                cout << endl;
+                
+                //            cout << list << endl;
+            }
         }
     
         if (input[0] == 'd' || input[0] == 'D')
@@ -165,7 +173,11 @@ int main(int argc, const char * argv[])
         {
             list.displayLines(firstNum, secondNum);
             cout << endl;
-            
+        }
+        
+        if (input[0] == 'g' || input[0] == 'G')
+        {
+            bufferLine = firstNum;
         }
         
         
