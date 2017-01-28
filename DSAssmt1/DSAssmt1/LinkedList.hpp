@@ -120,7 +120,6 @@ public:
         }
     }
 
-    
     void DeleteNode(int nodenum)
     {
         int index = 0;
@@ -155,6 +154,43 @@ public:
             delete node;
         }
     }
+
+    
+    
+//    void DeleteNode(int nodenum)
+//    {
+//        int index = 0;
+//        
+//        Node *nodePtr;//used in the traverse
+//        Node *previousNode = 0;
+//        
+//        ////if the list is empty, do nothing
+//        if (!first)
+//            return;
+//        //discover if the first node is being deleted
+//        if (index== nodenum)//is it first in list
+//        {
+//            nodePtr = first->next;
+//            delete first;
+//            first = nodePtr;
+//        }else//if node being deleted is not the first one
+//        {
+//            nodePtr = first;
+//            //traverse and skip non targets
+//            while (nodePtr != 0 && index != nodenum) {
+//                previousNode = nodePtr;
+//                nodePtr = nodePtr->next;
+//                index++;
+//            }//end while
+//            //if nodeptr is not at the end of the list, link the previous node to
+//            //the node after nodeptr, the delete nodeptr
+//            if (nodePtr)
+//            {
+//                previousNode->next = nodePtr->next;
+//                delete nodePtr;
+//            }
+//        }//end else
+//    }
     
     void displayAllLines(int num, int num2)
     {
@@ -162,27 +198,21 @@ public:
         nodePtr = first;
         string marker = " ";
         
-        cout << endl << "*******************************************************************" << endl;
-        cout << "'I'= Insert | 'D' = Delete | 'G'= Goto |'I'= Insert | 'L' = Line(s)" << endl;
-        cout << "*******************************************************************" << endl << endl;
         for (int i = 1; i <= num; i++)
         {
             if ((i) == num2)
             {marker = ">";}
-            if ((i) < 10)
+            if (i < 10)
             {
                 cout << marker << (i) << " - " << nodePtr->data << endl;
             }
             else{
                 cout << marker << (i) << "- " << nodePtr->data << endl;
             }
-            
             nodePtr = nodePtr->next;
-                marker = " ";
+            
+            marker = " ";
         }
-        cout << endl << "*******************************************************************" << endl;
-        cout << "'V'= Display All | 'S'= Substitute | 'E'= Save and Exit |'Q'= Exit" << endl;
-        cout << "*******************************************************************" << endl << endl;
     }
     
     

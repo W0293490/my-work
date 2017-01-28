@@ -21,6 +21,22 @@ void ClearScreen()
     cout << string( 100, '\n' );
 }
 
+void printUpperBanner()
+{
+    cout << endl << "*******************************************************************" << endl;
+    cout << "'I'= Insert | 'D' = Delete | 'G'= Goto |'I'= Insert | 'L' = Line(s)" << endl;
+    cout << "*******************************************************************" << endl << endl;
+}
+
+void printLowerBanner()
+{
+    cout << endl << "*******************************************************************" << endl;
+    cout << "'V'= Display All | 'S'= Substitute | 'E'= Save and Exit |'Q'= Exit" << endl;
+    cout << "*******************************************************************" << endl << endl;
+}
+
+
+
 //regex will be ^[a-zA-Z](-[0-9]+)+$
 //better yet, ^[idvlgseqIDVLGSEQ](-[0-9]+)+$
 
@@ -62,24 +78,26 @@ int main(int argc, const char * argv[])
         list.Add(line);
     }
     
-    //get number of lines to feed displayAllLines method:
-    numberOfLines = (list.lineCounter(list));
+    
     
     //enter program loop:
     while (!quit)
     {
+        //get number of lines to feed displayAllLines method:
+        numberOfLines = (list.lineCounter(list));
         
         ClearScreen();
         
         //display all lines:
+        printUpperBanner();
         list.displayAllLines(numberOfLines, bufferLine);
+        printLowerBanner();
         
         //initialize numbers to zero for next input:
         firstNum = 0;
         secondNum = 0;
         
         //display the lines, prompt with line number, validate input:
-//        cout << list << endl;
         
         cout << ">> ";
         cin >> input;
