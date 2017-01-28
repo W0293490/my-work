@@ -24,7 +24,7 @@ void ClearScreen()
 void printUpperBanner()
 {
     cout << endl << "*******************************************************************" << endl;
-    cout << "'I'= Insert | 'D' = Delete | 'G'= Goto |'I'= Insert | 'L' = Line(s)" << endl;
+    cout << "'I'= Insert | 'D' = Delete | 'G'= Goto Line | 'L' = Display Line(s)" << endl;
     cout << "*******************************************************************" << endl << endl;
 }
 
@@ -78,6 +78,16 @@ int main(int argc, const char * argv[])
         list.Add(line);
     }
     
+    //get number of lines to feed displayAllLines method:
+    numberOfLines = (list.lineCounter(list));
+    
+    ClearScreen();
+    
+    //display all lines:
+    printUpperBanner();
+    list.displayAllLines(numberOfLines, bufferLine);
+    printLowerBanner();
+    
     
     
     //enter program loop:
@@ -85,13 +95,6 @@ int main(int argc, const char * argv[])
     {
         //get number of lines to feed displayAllLines method:
         numberOfLines = (list.lineCounter(list));
-        
-        ClearScreen();
-        
-        //display all lines:
-        printUpperBanner();
-        list.displayAllLines(numberOfLines, bufferLine);
-        printLowerBanner();
         
         //initialize numbers to zero for next input:
         firstNum = 0;
@@ -177,6 +180,17 @@ int main(int argc, const char * argv[])
                 
                 cout << endl;
             }
+            
+            //get number of lines to feed displayAllLines method:
+            numberOfLines = (list.lineCounter(list));
+            
+            ClearScreen();
+            
+            //display all lines:
+            printUpperBanner();
+            list.displayAllLines(numberOfLines, bufferLine);
+            printLowerBanner();
+            
         }
     
         if (input[0] == 'd' || input[0] == 'D')
@@ -198,24 +212,50 @@ int main(int argc, const char * argv[])
                 }
                 
             }
+            
+            //get number of lines to feed displayAllLines method:
+            numberOfLines = (list.lineCounter(list));
+            
+            ClearScreen();
+            
+            //display all lines:
+            printUpperBanner();
+            list.displayAllLines(numberOfLines, bufferLine);
+            printLowerBanner();
         }
     
         if (input[0] == 'v' || input[0] == 'V')
         {
-            cout << list << endl;
+            ClearScreen();
+            
+            //display all lines:
+            printUpperBanner();
+            list.displayAllLines(numberOfLines, bufferLine);
+            printLowerBanner();
         
         }
         
         
         if (input[0] == 'l' || input[0] == 'L')
         {
+            ClearScreen();
+            
+            printUpperBanner();
             list.displayLines(firstNum, secondNum);
-            cout << endl;
+            printLowerBanner();
+//            cout << endl;
         }
         
         if (input[0] == 'g' || input[0] == 'G')
         {
             bufferLine = firstNum;
+            
+            ClearScreen();
+            
+            //display all lines:
+            printUpperBanner();
+            list.displayAllLines(numberOfLines, bufferLine);
+            printLowerBanner();
         }
         
         if (input[0] == 's' || input[0] == 'S')
@@ -241,6 +281,13 @@ int main(int argc, const char * argv[])
                 
                 cout << endl;
             }
+            
+            ClearScreen();
+            
+            //display all lines:
+            printUpperBanner();
+            list.displayAllLines(numberOfLines, bufferLine);
+            printLowerBanner();
         }
         
         

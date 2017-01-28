@@ -228,7 +228,7 @@ public:
             {
                 nodePtr = nodePtr->next;
             }
-            cout << nodePtr->data << endl;
+            cout << num1 << " - " << nodePtr->data << endl;
         }
         else
         {
@@ -240,7 +240,7 @@ public:
             }
             for (int i = 0; i <= index; i++)
             {
-                cout << nodePtr->data << endl;
+                cout << (num1+i) << " - " << nodePtr->data << endl;
                 nodePtr = nodePtr->next;
             }
         }  

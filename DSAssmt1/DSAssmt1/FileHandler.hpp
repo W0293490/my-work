@@ -29,7 +29,7 @@ public:
         {
             if(!ifstrm)
             {
-                cout << "ERROR: Cannot open file!" << endl;
+                cout << "ERROR: Cannot open file! Please make sure to enter the correct filename and path in the first argument:" << endl;
                 exit(1);
             }
         }
