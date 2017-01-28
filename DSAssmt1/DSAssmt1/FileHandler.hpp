@@ -43,10 +43,12 @@ public:
     
     ofstream writeFile(string file)
     {
+        //writing list to new text file
         ofstream myfile;
         myfile.open (file);
         return myfile;
         myfile.close();
+        
     }
     
 };

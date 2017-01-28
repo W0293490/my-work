@@ -53,9 +53,9 @@ public:
         Node* newNode = new Node();
         newNode->data = data;
         
-        int tempPos = 0;   // Traverses through the list
+        int tempPos = 0;
         
-        curr = first;      // Initialize current to head;
+        curr = first;
         if(first != NULL)
         {
             while(curr->next != NULL && tempPos != pos)
@@ -156,17 +156,33 @@ public:
         }
     }
     
-    void displayLine(int num)
+    void displayAllLines(int num, int num2)
     {
         Node *nodePtr;
         nodePtr = first;
+        string marker = " ";
         
-        for (int i = 1; i < num; i++)
+        cout << endl << "*******************************************************************" << endl;
+        cout << "'I'= Insert | 'D' = Delete | 'G'= Goto |'I'= Insert | 'L' = Line(s)" << endl;
+        cout << "*******************************************************************" << endl << endl;
+        for (int i = 1; i <= num; i++)
         {
+            if ((i) == num2)
+            {marker = ">";}
+            if ((i) < 10)
+            {
+                cout << marker << (i) << " - " << nodePtr->data << endl;
+            }
+            else{
+                cout << marker << (i) << "- " << nodePtr->data << endl;
+            }
+            
             nodePtr = nodePtr->next;
+                marker = " ";
         }
-        cout << nodePtr->data << endl;
-        
+        cout << endl << "*******************************************************************" << endl;
+        cout << "'V'= Display All | 'S'= Substitute | 'E'= Save and Exit |'Q'= Exit" << endl;
+        cout << "*******************************************************************" << endl << endl;
     }
     
     
@@ -188,55 +204,37 @@ public:
         {
             index = num2 - num1;
         
-        for (int i = 1; i < num1; i++)
-        {
-            nodePtr = nodePtr->next;
-        }
-        for (int i = 0; i <= index; i++)
-        {
-            cout << nodePtr->data << endl;
-            nodePtr = nodePtr->next;
-        }
-        
-//        cout << nodePtr->data << endl;
-        }
-        
-        
+            for (int i = 1; i < num1; i++)
+            {
+                nodePtr = nodePtr->next;
+            }
+            for (int i = 0; i <= index; i++)
+            {
+                cout << nodePtr->data << endl;
+                nodePtr = nodePtr->next;
+            }
+        }  
     }
-
     
-//    string getLine(LinkedList& list, Node index)
-//    {
-//        string line;
-//        index = *list.first;
-//        
-//        
-//            line = index.data;
-//            
-//            index = *index.next;
-//        
-//        
-//        return line;
-//    }
-    
-    
-    friend ostream& operator<<(ostream& output, LinkedList& list);
-    
-    string getLine(LinkedList& list)
+    int lineCounter(LinkedList& list)
     {
-        string output;
+        int count = 0;
+        
         Node *currNode = list.first;
         
         while (currNode != NULL)
         {
-            output = currNode->data;
+            count++;
             
             currNode = currNode->next;
         }
         
-        return output;
+        return count;
     }
+
+
     
+    friend ostream& operator<<(ostream& output, LinkedList& list);
     
 };
 

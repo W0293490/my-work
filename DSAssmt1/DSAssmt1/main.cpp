@@ -10,13 +10,16 @@
 #include <fstream>
 #include <regex>
 #include <math.h>
-#include <array>
 #include "LinkedList.hpp"
 #include "Parser.hpp"
-#include "FileHandler.cpp"
+#include "FileHandler.hpp"
 
 using namespace std;
 
+void ClearScreen()
+{
+    cout << string( 100, '\n' );
+}
 
 //regex will be ^[a-zA-Z](-[0-9]+)+$
 //better yet, ^[idvlgseqIDVLGSEQ](-[0-9]+)+$
@@ -25,6 +28,7 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
     regex r("^[idvlgseqIDVLGSEQ](-[0-9]+)+$");
+    regex man("-man");
     int firstNum = 0;
     int secondNum = 0;
     string STRING;
@@ -34,9 +38,17 @@ int main(int argc, const char * argv[])
     FileHandler fileHandler;
     bool quit = false;
     int bufferLine = 1;
+    int numberOfLines;
     
     //validate args, read and write file to list:
-    if (argc != 3)
+    if (regex_match(argv[1],man))
+    {
+        cout << "This is where the manual will go." << endl;
+        cout << "it will guide you with rules and stuff." << endl;
+        return 0;
+    }
+    
+    else if (argc != 3)
     {
         cout << "You must provide two arguments (an input file and an output file)." << endl;
         return -1;
@@ -50,16 +62,26 @@ int main(int argc, const char * argv[])
         list.Add(line);
     }
     
+    //get number of lines to feed displayAllLines method:
+    numberOfLines = (list.lineCounter(list));
+    
     //enter program loop:
     while (!quit)
     {
+        
+        ClearScreen();
+        
+        //display all lines:
+        list.displayAllLines(numberOfLines, bufferLine);
+        
         //initialize numbers to zero for next input:
         firstNum = 0;
         secondNum = 0;
-        //display the lines, prompt with line number, validate input:
-        cout << list << endl;
         
-        cout << "Currently at line number " << bufferLine << ": " << endl;
+        //display the lines, prompt with line number, validate input:
+//        cout << list << endl;
+        
+        cout << ">> ";
         cin >> input;
         
         //quit:
@@ -78,11 +100,13 @@ int main(int argc, const char * argv[])
             return 0;
         }
         
+        
+        
         //show list:
-        if (input[0] == 'v' || input[0] == 'V')
-        {
-            cout << list << endl;
-        }
+//        if (input[0] == 'v' || input[0] == 'V')
+//        {
+//            cout << list << endl;
+//        }
         
         
         while(!regex_match(input, r)){
@@ -128,16 +152,12 @@ int main(int argc, const char * argv[])
                 list.addNodeAtPos(userLine, firstNum-1);
             
                 cout << endl;
-            
-//            cout << list << endl;
             }
             if (numberOfNumbers == 0)
             {
                 list.addNodeAtPos(userLine, bufferLine);
                 
                 cout << endl;
-                
-                //            cout << list << endl;
             }
         }
     
@@ -178,6 +198,31 @@ int main(int argc, const char * argv[])
         if (input[0] == 'g' || input[0] == 'G')
         {
             bufferLine = firstNum;
+        }
+        
+        if (input[0] == 's' || input[0] == 'S')
+        {
+            string userLine;
+            
+            cout << "Please key in the line you would like to replace the deleted line with: " << endl;
+            cin.clear();
+            cin.ignore(256, '\n');
+            getline(cin, userLine);
+            
+            if (numberOfNumbers == 1)
+            {
+                list.DeleteNode(firstNum);
+                list.addNodeAtPos(userLine, firstNum-1);
+                
+                cout << endl;
+            }
+            if (numberOfNumbers == 0)
+            {
+                list.DeleteNode(firstNum);
+                list.addNodeAtPos(userLine, bufferLine);
+                
+                cout << endl;
+            }
         }
         
         
