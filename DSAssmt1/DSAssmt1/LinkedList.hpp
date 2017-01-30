@@ -68,6 +68,11 @@ public:
             {
                 cout << "Adding at Head! " << endl;
                 // Call function to addNode from head;
+                first = newNode;
+                first->next = curr;
+                cout << "Node added at position: " << pos << endl;
+                
+                
             }
             else if(curr->next == NULL && pos == tempPos+1)
             {

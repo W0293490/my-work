@@ -56,6 +56,7 @@ void printLowerBanner()
 
 int main(int argc, const char * argv[])
 {
+    //regex variables:
     regex r("^[idvlgseqIDVLGSEQ]((-[0-9]+)+)?$");
     regex man("-man");
     regex i("[Ii](-[0-9]+)?");
@@ -67,7 +68,7 @@ int main(int argc, const char * argv[])
     regex e("[Ee]$");
     regex q("[Qq]$");
     
-    
+    //misc. variables:
     int firstNum = 0;
     int secondNum = 0;
     int numberOfNumbers = 0;
@@ -125,9 +126,11 @@ int main(int argc, const char * argv[])
         secondNum = 0;
         
         //display the lines, prompt with line number, validate input:
-        
+        cin.clear();
+        cin.ignore(256, '\n');
         cout << ">> ";
-        cin >> input;
+//        cin >> input;
+        cin.getline(input, 10);
         
         //for input for quit:
         if (regex_match(input, q))
@@ -155,38 +158,39 @@ int main(int argc, const char * argv[])
             
         }
         
-                while(!regex_match(input, r))
-                {
-                    cout << "Please key in a proper sequence: \n" << endl;
-                    cin.clear();
-                    cin.ignore(256, '\n');
-                    cin >> input;
-                    cout << "\n";
-                }
+        while(!regex_match(input, r))
+        {
+            cout << "Please key in a proper sequence: \n" << endl;
+            cin.clear();
+            cin.ignore(256, '\n');
+//                  cin >> input;
+            cin.getline(input, 10);
+            cout << "\n";
+        }
         
         
         //methods to get numbers from input
         
         while(!regex_match(input, v) || !regex_match(input, s))
         {
-        numberOfNumbers = parser.numOfNums(input);
+            numberOfNumbers = parser.numOfNums(input);
         
         
-        if (numberOfNumbers == 1)
-        {
-            int ind2 = parser.getNumDigitsInArray(input);
-            firstNum = parser.getNumberWhenOnlyOne(input, ind2);
-            cout << "the number is " << firstNum << endl;
-        }
-        else if (numberOfNumbers == 2)
-        {
-            firstNum = parser.getNum1(input);
-            int ind = parser.GetNumberOfDigits(firstNum) + 2;
-            secondNum = parser.getNum2(input, ind);
-            cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
-        }
-            break;
-        }
+            if (numberOfNumbers == 1)
+            {
+                int numOfDigits = parser.getNumDigitsInArray(input);
+                firstNum = parser.getNumberWhenOnlyOne(input, numOfDigits);
+                cout << "the number is " << firstNum << endl;
+            }
+            else if (numberOfNumbers == 2)
+            {
+                firstNum = parser.getNum1(input);
+                int ind = parser.GetNumberOfDigits(firstNum) + 2;
+                secondNum = parser.getNum2(input, ind);
+                cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
+            }
+                break;
+            }
         
         
         //for input for insert:
@@ -201,13 +205,13 @@ int main(int argc, const char * argv[])
             
             if (numberOfNumbers == 1)
             {
-                list.addNodeAtPos(userLine, firstNum-1);
+                list.addNodeAtPos(userLine, firstNum);
                 
                 cout << endl;
             }
             if (numberOfNumbers == 0)
             {
-                list.addNodeAtPos(userLine, bufferLine - 1);
+                list.addNodeAtPos(userLine, bufferLine);
                 
                 cout << endl;
             }
