@@ -53,7 +53,7 @@ public:
         Node* newNode = new Node();
         newNode->data = data;
         
-        int tempPos = 0;
+        int tempPos = 1;
         
         curr = first;
         if(first != NULL)
@@ -64,7 +64,7 @@ public:
                 curr = curr->next;
                 tempPos++;
             }
-            if(pos==0)
+            if(pos==1)
             {
                 cout << "Adding at Head! " << endl;
                 // Call function to addNode from head;
@@ -93,10 +93,10 @@ public:
         }
     }
     
-    void Add(string num)
+    void Add(string data)
     {
         Node *node = new Node();
-        node->data = num;
+        node->data = data;
         
         if (first == NULL)
         {
@@ -157,40 +157,40 @@ public:
 
     
     
-//    void DeleteNode(int nodenum)
-//    {
-//        int index = 0;
-//        
-//        Node *nodePtr;//used in the traverse
-//        Node *previousNode = 0;
-//        
-//        ////if the list is empty, do nothing
-//        if (!first)
-//            return;
-//        //discover if the first node is being deleted
-//        if (index== nodenum)//is it first in list
-//        {
-//            nodePtr = first->next;
-//            delete first;
-//            first = nodePtr;
-//        }else//if node being deleted is not the first one
-//        {
-//            nodePtr = first;
-//            //traverse and skip non targets
-//            while (nodePtr != 0 && index != nodenum) {
-//                previousNode = nodePtr;
-//                nodePtr = nodePtr->next;
-//                index++;
-//            }//end while
-//            //if nodeptr is not at the end of the list, link the previous node to
-//            //the node after nodeptr, the delete nodeptr
-//            if (nodePtr)
-//            {
-//                previousNode->next = nodePtr->next;
-//                delete nodePtr;
-//            }
-//        }//end else
-//    }
+    void DeleteNode2(int nodenum)
+    {
+        int index = 1;
+        
+        Node *nodePtr;//used in the traverse
+        Node *previousNode = 0;
+        
+        ////if the list is empty, do nothing
+        if (!first)
+            return;
+        //discover if the first node is being deleted
+        if (index== nodenum)//is it first in list
+        {
+            nodePtr = first->next;
+            delete first;
+            first = nodePtr;
+        }else//if node being deleted is not the first one
+        {
+            nodePtr = first;
+            //traverse and skip non targets
+            while (nodePtr != 0 && index != nodenum) {
+                previousNode = nodePtr;
+                nodePtr = nodePtr->next;
+                index++;
+            }//end while
+            //if nodeptr is not at the end of the list, link the previous node to
+            //the node after nodeptr, the delete nodeptr
+            if (nodePtr)
+            {
+                previousNode->next = nodePtr->next;
+                delete nodePtr;
+            }
+        }//end else
+    }
     
     void displayAllLines(int num, int num2)
     {

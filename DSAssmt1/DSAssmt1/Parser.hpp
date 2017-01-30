@@ -125,15 +125,27 @@ public:
     //get number of numbers in input:
     int numOfNums(const char array[])
     {
-        int num;
+        int num = 0;
         int dashes = 0;
-        
         for (int i = 0;i < 10 ;i++)
             if (array[i] == '-')
             {
                 dashes++;
             }
-        num = (dashes == 1 ? 1 : 2);
+        switch (dashes) {
+            case 0:
+                num = 0;
+                break;
+            case 1:
+                num = 1;
+                break;
+            case 2:
+                num = 2;
+                break;
+                
+            default:
+                break;
+        }
         
         return num;
     }

@@ -23,30 +23,54 @@ void ClearScreen()
 
 void printUpperBanner()
 {
-    cout << endl << "*******************************************************************" << endl;
+    cout << endl << string(67,'*') << endl;
     cout << "'I'= Insert | 'D' = Delete | 'G'= Goto Line | 'L' = Display Line(s)" << endl;
-    cout << "*******************************************************************" << endl << endl;
+    cout << string(67,'*') << endl << endl;
 }
 
 void printLowerBanner()
 {
-    cout << endl << "*******************************************************************" << endl;
+    cout << endl << string(67,'*') << endl;
     cout << "'V'= Display All | 'S'= Substitute | 'E'= Save and Exit |'Q'= Exit" << endl;
-    cout << "*******************************************************************" << endl << endl;
+    cout << string(67,'*') << endl << endl;
 }
 
 
 
 //regex will be ^[a-zA-Z](-[0-9]+)+$
 //better yet, ^[idvlgseqIDVLGSEQ](-[0-9]+)+$
+//[Dd](-[0-9]+)+$
+//[Dd](-[0-9])?(-[0-9])?
+//[Dd](-[0-9]+)?(-[0-9]+)?
+
+//[Ii](-[0-9]+)?
+//[Dd](-[0-9]+)?(-[0-9]+)?
+//[Vv]?
+//[Gg](-[0-9]+)?
+//[Ll](-[0-9]+)?(-[0-9]+)?
+//[Ss](-[0-9]+)?
+//[Ee]?
+//[Ss]?
+
 
 
 int main(int argc, const char * argv[])
 {
-    regex r("^[idvlgseqIDVLGSEQ](-[0-9]+)+$");
+    regex r("^[idvlgseqIDVLGSEQ]((-[0-9]+)+)?$");
     regex man("-man");
+    regex i("[Ii](-[0-9]+)?");
+    regex d("[Dd](-[0-9]+)?(-[0-9]+)?");
+    regex v("[Vv]$");
+    regex g("[Gg](-[0-9]+)?");
+    regex l("[Ll](-[0-9]+)?(-[0-9]+)?");
+    regex s("[Ss](-[0-9]+)?");
+    regex e("[Ee]$");
+    regex q("[Qq]$");
+    
+    
     int firstNum = 0;
     int secondNum = 0;
+    int numberOfNumbers = 0;
     string STRING;
     char input[20];
     LinkedList list;
@@ -69,7 +93,7 @@ int main(int argc, const char * argv[])
         cout << "You must provide two arguments (an input file and an output file)." << endl;
         return -1;
     }
-
+    
     ifstream stream = fileHandler.readFile(argv[1]);
     
     string line;
@@ -105,43 +129,48 @@ int main(int argc, const char * argv[])
         cout << ">> ";
         cin >> input;
         
-        //quit:
-        if (input[0] == 'Q' || input[0] == 'q')
+        //for input for quit:
+        if (regex_match(input, q))
         {
             return 0;
         }
         
-        //quit and save file:
-        if (input[0] == 'E' || input[0] == 'e')
+        //for input for quit and save file:
+        if (regex_match(input, e))
         {
             ofstream myFile = fileHandler.writeFile(argv[2]);
-            
             myFile << list;
-            
             return 0;
         }
         
-        
-        
-        //show list:
-//        if (input[0] == 'v' || input[0] == 'V')
-//        {
-//            cout << list << endl;
-//        }
-        
-        
-        while(!regex_match(input, r)){
+        //for input for display all:
+        if (regex_match(input, v))
+        {
+            ClearScreen();
             
-            cout << "Please key in a proper sequence: \n" << endl;
-            cin.clear();
-            cin.ignore(256, '\n');
-            cin >> input;
-            cout << "\n";
+            //display all lines:
+            printUpperBanner();
+            list.displayAllLines(numberOfLines, bufferLine);
+            printLowerBanner();
+            
         }
         
-    
-    //methods to get numbers from input
-        int numberOfNumbers = parser.numOfNums(input);
+                while(!regex_match(input, r))
+                {
+                    cout << "Please key in a proper sequence: \n" << endl;
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                    cin >> input;
+                    cout << "\n";
+                }
+        
+        
+        //methods to get numbers from input
+        
+        while(!regex_match(input, v) || !regex_match(input, s))
+        {
+        numberOfNumbers = parser.numOfNums(input);
+        
         
         if (numberOfNumbers == 1)
         {
@@ -149,34 +178,36 @@ int main(int argc, const char * argv[])
             firstNum = parser.getNumberWhenOnlyOne(input, ind2);
             cout << "the number is " << firstNum << endl;
         }
-        else
+        else if (numberOfNumbers == 2)
         {
             firstNum = parser.getNum1(input);
             int ind = parser.GetNumberOfDigits(firstNum) + 2;
             secondNum = parser.getNum2(input, ind);
             cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
         }
+            break;
+        }
         
         
-        
-        if (input[0] == 'i' || input[0] == 'I')
+        //for input for insert:
+        if (regex_match(input, i))
         {
             string userLine;
-        
+            
             cout << "Please key in the line you would like to insert: " << endl;
             cin.clear();
             cin.ignore(256, '\n');
             getline(cin, userLine);
-        
+            
             if (numberOfNumbers == 1)
             {
                 list.addNodeAtPos(userLine, firstNum-1);
-            
+                
                 cout << endl;
             }
             if (numberOfNumbers == 0)
             {
-                list.addNodeAtPos(userLine, bufferLine);
+                list.addNodeAtPos(userLine, bufferLine - 1);
                 
                 cout << endl;
             }
@@ -192,23 +223,25 @@ int main(int argc, const char * argv[])
             printLowerBanner();
             
         }
-    
-        if (input[0] == 'd' || input[0] == 'D')
+        
+        //for input for delete:
+        if (regex_match(input, d))
         {
-            if (firstNum == 0)
+            if (firstNum == 0 && secondNum == 0)
             {
-                list.DeleteNode(0);
+                list.DeleteNode2(bufferLine);
             }
-            else if (secondNum == 0)
+            else if (firstNum != 0 && secondNum == 0)
             {
-            list.DeleteNode(firstNum);
+                list.DeleteNode2(firstNum);
             }
+            
             else
             {
                 int range = secondNum - firstNum;
                 for (int i = 0; i <= range; i++)
                 {
-                    list.DeleteNode(firstNum);
+                    list.DeleteNode2(firstNum);
                 }
                 
             }
@@ -223,32 +256,29 @@ int main(int argc, const char * argv[])
             list.displayAllLines(numberOfLines, bufferLine);
             printLowerBanner();
         }
-    
-        if (input[0] == 'v' || input[0] == 'V')
-        {
-            ClearScreen();
-            
-            //display all lines:
-            printUpperBanner();
-            list.displayAllLines(numberOfLines, bufferLine);
-            printLowerBanner();
         
-        }
-        
-        
-        if (input[0] == 'l' || input[0] == 'L')
+        //for input for display line:
+        if (regex_match(input, l))
         {
             ClearScreen();
             
             printUpperBanner();
             list.displayLines(firstNum, secondNum);
             printLowerBanner();
-//            cout << endl;
+            //            cout << endl;
         }
         
-        if (input[0] == 'g' || input[0] == 'G')
+        //for input for goto line:
+        if (regex_match(input, g))
         {
-            bufferLine = firstNum;
+            if (numberOfNumbers == 0)
+            {
+                bufferLine = 1;
+            }
+            else
+            {
+                bufferLine = firstNum;
+            }
             
             ClearScreen();
             
@@ -258,7 +288,8 @@ int main(int argc, const char * argv[])
             printLowerBanner();
         }
         
-        if (input[0] == 's' || input[0] == 'S')
+        //for input for substitute:
+        if (regex_match(input, s))
         {
             string userLine;
             
@@ -269,14 +300,14 @@ int main(int argc, const char * argv[])
             
             if (numberOfNumbers == 1)
             {
-                list.DeleteNode(firstNum);
-                list.addNodeAtPos(userLine, firstNum-1);
+                list.DeleteNode2(firstNum);
+                list.addNodeAtPos(userLine, firstNum);
                 
                 cout << endl;
             }
             if (numberOfNumbers == 0)
             {
-                list.DeleteNode(firstNum);
+                list.DeleteNode2(bufferLine);
                 list.addNodeAtPos(userLine, bufferLine);
                 
                 cout << endl;
@@ -295,4 +326,5 @@ int main(int argc, const char * argv[])
     
     return 0;
 }
+
 
