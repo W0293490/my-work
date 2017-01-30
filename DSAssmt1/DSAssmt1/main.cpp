@@ -35,25 +35,6 @@ void printLowerBanner()
     cout << string(67,'*') << endl << endl;
 }
 
-
-
-//regex will be ^[a-zA-Z](-[0-9]+)+$
-//better yet, ^[idvlgseqIDVLGSEQ](-[0-9]+)+$
-//[Dd](-[0-9]+)+$
-//[Dd](-[0-9])?(-[0-9])?
-//[Dd](-[0-9]+)?(-[0-9]+)?
-
-//[Ii](-[0-9]+)?
-//[Dd](-[0-9]+)?(-[0-9]+)?
-//[Vv]?
-//[Gg](-[0-9]+)?
-//[Ll](-[0-9]+)?(-[0-9]+)?
-//[Ss](-[0-9]+)?
-//[Ee]?
-//[Ss]?
-
-
-
 int main(int argc, const char * argv[])
 {
     //regex variables:
@@ -67,6 +48,7 @@ int main(int argc, const char * argv[])
     regex s("[Ss](-[0-9]+)?");
     regex e("[Ee]$");
     regex q("[Qq]$");
+    regex gOnly("[Gg]$");
     
     //misc. variables:
     int firstNum = 0;
@@ -118,6 +100,8 @@ int main(int argc, const char * argv[])
     //enter program loop:
     while (!quit)
     {
+        //clear input:
+        memset(input, 0, sizeof(input));
         //get number of lines to feed displayAllLines method:
         numberOfLines = (list.lineCounter(list));
         
@@ -126,10 +110,7 @@ int main(int argc, const char * argv[])
         secondNum = 0;
         
         //display the lines, prompt with line number, validate input:
-        cin.clear();
-        cin.ignore(256, '\n');
         cout << ">> ";
-//        cin >> input;
         cin.getline(input, 10);
         
         //for input for quit:
@@ -170,28 +151,21 @@ int main(int argc, const char * argv[])
         
         
         //methods to get numbers from input
+        numberOfNumbers = parser.numOfNums(input);
         
-        while(!regex_match(input, v) || !regex_match(input, s))
+        if (numberOfNumbers == 1)
         {
-            numberOfNumbers = parser.numOfNums(input);
-        
-        
-            if (numberOfNumbers == 1)
-            {
-                int numOfDigits = parser.getNumDigitsInArray(input);
-                firstNum = parser.getNumberWhenOnlyOne(input, numOfDigits);
-                cout << "the number is " << firstNum << endl;
-            }
-            else if (numberOfNumbers == 2)
-            {
-                firstNum = parser.getNum1(input);
-                int ind = parser.GetNumberOfDigits(firstNum) + 2;
-                secondNum = parser.getNum2(input, ind);
-                cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
-            }
-                break;
-            }
-        
+            int numOfDigits = parser.getNumDigitsInArray(input);
+            firstNum = parser.getNumberWhenOnlyOne(input, numOfDigits);
+            cout << "the number is " << firstNum << endl;
+        }
+        else if (numberOfNumbers == 2)
+        {
+            firstNum = parser.getNum1(input);
+            int ind = parser.GetNumberOfDigits(firstNum) + 2;
+            secondNum = parser.getNum2(input, ind);
+            cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
+        }
         
         //for input for insert:
         if (regex_match(input, i))
@@ -199,8 +173,6 @@ int main(int argc, const char * argv[])
             string userLine;
             
             cout << "Please key in the line you would like to insert: " << endl;
-            cin.clear();
-            cin.ignore(256, '\n');
             getline(cin, userLine);
             
             if (numberOfNumbers == 1)
@@ -225,7 +197,6 @@ int main(int argc, const char * argv[])
             printUpperBanner();
             list.displayAllLines(numberOfLines, bufferLine);
             printLowerBanner();
-            
         }
         
         //for input for delete:
@@ -247,7 +218,6 @@ int main(int argc, const char * argv[])
                 {
                     list.DeleteNode2(firstNum);
                 }
-                
             }
             
             //get number of lines to feed displayAllLines method:
@@ -269,7 +239,6 @@ int main(int argc, const char * argv[])
             printUpperBanner();
             list.displayLines(firstNum, secondNum);
             printLowerBanner();
-            //            cout << endl;
         }
         
         //for input for goto line:
@@ -298,8 +267,6 @@ int main(int argc, const char * argv[])
             string userLine;
             
             cout << "Please key in the line you would like to replace the deleted line with: " << endl;
-            cin.clear();
-            cin.ignore(256, '\n');
             getline(cin, userLine);
             
             if (numberOfNumbers == 1)
@@ -324,8 +291,6 @@ int main(int argc, const char * argv[])
             list.displayAllLines(numberOfLines, bufferLine);
             printLowerBanner();
         }
-        
-        
     }
     
     return 0;
