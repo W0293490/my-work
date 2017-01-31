@@ -149,6 +149,15 @@ public:
         
         return num;
     }
+    
+    //swap numbers, from "http://www.cplusplus.com/forum/beginner/7469/"
+    void swap(int &num1, int &num2) {
+        if (num1 > num2) {
+            num1 = num1 + num2;
+            num2 = num1 - num2;
+            num1 = num1 - num2;
+        }
+    }
 };
 
 

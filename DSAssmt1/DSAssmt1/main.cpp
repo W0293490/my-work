@@ -10,6 +10,7 @@
 #include <fstream>
 #include <regex>
 #include <math.h>
+#include <string.h>
 #include "LinkedList.hpp"
 #include "Parser.hpp"
 #include "FileHandler.hpp"
@@ -39,7 +40,7 @@ int main(int argc, const char * argv[])
 {
     //regex variables:
     regex r("^[idvlgseqIDVLGSEQ]((-[0-9]+)+)?$");
-    regex man("-man");
+    regex help("-h");
     regex i("[Ii](-[0-9]+)?");
     regex d("[Dd](-[0-9]+)?(-[0-9]+)?");
     regex v("[Vv]$");
@@ -62,12 +63,47 @@ int main(int argc, const char * argv[])
     bool quit = false;
     int bufferLine = 1;
     int numberOfLines;
+    char fileExt[] = ".txt";
+    
+    //this wil append '.txt' to any save name.
+    char str1[16];
+    char str2[16];
+    strcpy(str1, argv[2]);
+    strcpy(str2, fileExt);
+    strcat(str1, str2);
+    string newStr1 = string(str1);
+    
     
     //validate args, read and write file to list:
-    if (regex_match(argv[1],man))
+    if (regex_match(argv[1], help))
     {
-        cout << "This is where the manual will go." << endl;
-        cout << "it will guide you with rules and stuff." << endl;
+        cout << endl;
+        cout << "DATA STRUCTURES - ASSMT 1 - EDIT v1.0 (2017 Jan 20, compiled Jan 30 2017)\n" << endl;
+        cout << "usage: EDIT [file... (file to read from)] [file... (file to save to]" << endl;
+        cout << "       The second argument will be a text file, automatically saved in the root directory" << endl;
+        cout << "or: EDIT -h (for the man page)\n" << endl;
+        cout << "THIS IS A LIST OF COMMAND LETTERS AND THEIR MEANINGS:" << endl;
+        cout << "      They are to be typed as a command letter (upper or lower case), then " << endl;
+        cout << "      optionally (as required) a number, followed by, optionally (as required)" << endl;
+        cout << "      a second number. The letter and number must be separated by a dash, with" << endl;
+        cout << "      no spaces, Examples are: 'd', or 'd-2', or 'd-2-5'. No other formation " << endl;
+        cout << "      will be accepted. The commands are:" << endl;
+        cout << "'I' - will insert a line (provided by the user) in the specified position, or at " << endl;
+        cout << "      the current position of the cursor." << endl;
+        cout << "'D' - will delete the line, or lines of a given number or numbers, or delete the " << endl;
+        cout << "      line at the position of the cursor if no number is given." << endl;
+        cout << "'V' - will display all lines." << endl;
+        cout << "'G' - will move the cursor to the line of the number provided, or set the cursor " << endl;
+        cout << "      to the first line of no number is provided." << endl;
+        cout << "'L' - will list the lines of the buffer using the same numbering system as the 'D' " << endl;
+        cout << "      command" << endl;
+        cout << "'S' - will substitute a line (provided by the user) with the line in the specified " << endl;
+        cout << "      position, or at the current position of the cursor." << endl;
+        cout << "'E' - will exit the program, and save the updated text file in the root directory, " << endl;
+        cout << "      with the name provided as the second argument." << endl;
+        cout << "'S' - will exit the program without saving.\n" << endl;
+    
+        
         return 0;
     }
     
@@ -122,7 +158,7 @@ int main(int argc, const char * argv[])
         //for input for quit and save file:
         if (regex_match(input, e))
         {
-            ofstream myFile = fileHandler.writeFile(argv[2]);
+            ofstream myFile = fileHandler.writeFile(newStr1);
             myFile << list;
             return 0;
         }
@@ -157,15 +193,43 @@ int main(int argc, const char * argv[])
         {
             int numOfDigits = parser.getNumDigitsInArray(input);
             firstNum = parser.getNumberWhenOnlyOne(input, numOfDigits);
-            cout << "the number is " << firstNum << endl;
+//            cout << "the number is " << firstNum << endl;
         }
         else if (numberOfNumbers == 2)
         {
             firstNum = parser.getNum1(input);
             int ind = parser.GetNumberOfDigits(firstNum) + 2;
             secondNum = parser.getNum2(input, ind);
-            cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
+//            cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
         }
+        
+        //validation for numbers input:
+        
+        
+        if (numberOfNumbers != 1 && numberOfNumbers != 0)
+            {
+                if (firstNum > secondNum)
+                {
+                    parser.swap(firstNum, secondNum);
+                }
+                
+                if (firstNum == 0 || firstNum > numberOfLines || secondNum == 0 || secondNum > numberOfLines)
+                {
+                    cout << "Please keep the numbers within bounds..." << endl;
+                    continue;
+                }
+            }
+        
+        if (numberOfNumbers == 1)
+        {
+            if (firstNum == 0 || firstNum > numberOfLines)
+            {
+                cout << "Please keep the numbers within bounds..." << endl;
+                continue;
+            }
+        }
+        
+//        cout << "the numbers are " << firstNum << " and " << secondNum << endl << endl;
         
         //for input for insert:
         if (regex_match(input, i))

@@ -20,6 +20,7 @@ class FileHandler
 {
 public:
     
+    //for opening file:
     ifstream readFile(string file)
     {
         ifstream ifstrm;
@@ -41,6 +42,8 @@ public:
         return ifstrm;
     }
     
+    
+    //for saving file:
     ofstream writeFile(string file)
     {
         //writing list to new text file

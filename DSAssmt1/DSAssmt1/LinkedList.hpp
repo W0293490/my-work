@@ -13,18 +13,18 @@
 
 using namespace std;
 
-struct Node
-{
-public:
-    string data;
-    Node *next;
-    
-    Node() : next(NULL), data("") {}
-};
+
 
 class LinkedList
 {
 private:
+    struct Node
+    {
+        string data;
+        Node *next;
+        
+        Node() : next(NULL), data("") {}
+    };
     Node *first;
     
 public:
@@ -44,8 +44,6 @@ public:
         }
     }
 
-    
-    
     void addNodeAtPos(string data, int pos)
     {
         Node* prev = new Node();
@@ -66,7 +64,7 @@ public:
             }
             if(pos==1)
             {
-                cout << "Adding at Head! " << endl;
+//                cout << "Adding at Head! " << endl;
                 // Call function to addNode from head;
                 first = newNode;
                 first->next = curr;
@@ -76,18 +74,20 @@ public:
             }
             else if(curr->next == NULL && pos == tempPos+1)
             {
-                cout << "Adding at Tail! " << endl;
+//                cout << "Adding at Tail! " << endl;
                 // Call function to addNode at tail;
+                curr->next = newNode;
+                newNode->next = NULL;
             }
-            else if(pos > tempPos+1)
-                cout << " Position is out of bounds " << endl;
-            //Position not valid
+//            else if(pos > tempPos+1)
+//                cout << " Position is out of bounds " << endl;
+//            //Position not valid
             
             else
             {
                 prev->next = newNode;
                 newNode->next = curr;
-                cout << "Node added at position: " << pos << endl;
+//                cout << "Node added at position: " << pos << endl;
             }
         }
         else
@@ -159,8 +159,6 @@ public:
             delete node;
         }
     }
-
-    
     
     void DeleteNode2(int nodenum)
     {
@@ -220,7 +218,6 @@ public:
         }
     }
     
-    
     void displayLines(int num1, int num2)
     {
         Node *nodePtr;
@@ -268,14 +265,13 @@ public:
     }
 
 
-    
     friend ostream& operator<<(ostream& output, LinkedList& list);
     
 };
 
 ostream& operator<<(ostream& output, LinkedList& list)
 {
-    Node *currNode = list.first;
+    LinkedList::Node *currNode = list.first;
     
     while (currNode != NULL)
     {
