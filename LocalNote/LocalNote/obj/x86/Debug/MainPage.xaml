@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="LocalNote.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalNote"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:ConnectionId='1' Icon="Add" Label="Add"                           />
+            <AppBarButton x:ConnectionId='2' Icon="Save" Label="Save"                             />
+            <AppBarButton Icon="Edit" Label="Edit"/>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Delete" Label="Delete"/>
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:ConnectionId='3' Label="About"                    />
+                <AppBarButton Label="Exit" />
+            </CommandBar.SecondaryCommands>
+
+            <CommandBar.Content>
+                <TextBlock Text="Current Note: " Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid BorderThickness="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <TextBox x:ConnectionId='5' x:Name="textBox" TextWrapping="Wrap" Text="Search for Notes..." VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10"/>
+                <ListView x:ConnectionId='6' x:Name="listView" Margin="0,56,0,0" BorderThickness="2"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox x:ConnectionId='4' x:Name="textBox1" TextWrapping="Wrap" Text="TextBox"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>
+
