@@ -18,8 +18,8 @@
     </Page.DataContext>
     <Page.TopAppBar>
         <CommandBar>
-            <AppBarButton Icon="Add" Label="Add" Click="AppBarButton_Click"/>
-            <AppBarButton Icon="Save" Label="Save" Click="AppBarButton_Click_1"/>
+            <AppBarButton Icon="Add" Label="Add" Click="Add_Click"/>
+            <AppBarButton Icon="Save" Label="Save" Click="Save_Click"/>
             <AppBarButton Icon="Edit" Label="Edit"/>
             <AppBarSeparator/>
             <AppBarButton Icon="Delete" Label="Delete"/>
@@ -47,10 +47,10 @@
             </Grid.ColumnDefinitions>
             <Grid>
                 <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10" PlaceholderText="Search for Notes..."/>
-                <ListView x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}"/>
+                <ListView x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" SelectionMode="Extended"/>
             </Grid>
             <Grid Grid.Column="1">
-                <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"/>
+                <TextBox x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"/>
             </Grid>
         </Grid>
 

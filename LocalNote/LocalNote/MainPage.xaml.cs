@@ -27,14 +27,19 @@ namespace LocalNote
             this.InitializeComponent();
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new Windows.UI.Popups.MessageDialog("Heyy");
+            
+            listView.SelectedItems.Clear();
+            textBoxBody.Text = "";
 
-            dlg.ShowAsync();
+
+            //var dlg = new Windows.UI.Popups.MessageDialog("Heyy");
+
+            //dlg.ShowAsync();
         }
 
-        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
         }

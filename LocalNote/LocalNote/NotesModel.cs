@@ -16,5 +16,6 @@ namespace LocalNote
             Title = title;
             Body = body;
         }
+
     }
 }
