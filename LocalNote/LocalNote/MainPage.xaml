@@ -6,6 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="NotesModelTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Title}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.DataContext>
+        <local:MainPageData/>
+    </Page.DataContext>
     <Page.TopAppBar>
         <CommandBar>
             <AppBarButton Icon="Add" Label="Add" Click="AppBarButton_Click"/>
@@ -20,7 +30,11 @@
             </CommandBar.SecondaryCommands>
 
             <CommandBar.Content>
-                <TextBlock Text="Current Note: " Margin="12,14"/>
+                <TextBlock Text="{Binding TestString, Mode=TwoWay}" Margin="12,14">
+                    <TextBlock.DataContext>
+                        <local:MainPageData/>
+                    </TextBlock.DataContext>
+                </TextBlock>
             </CommandBar.Content>
         </CommandBar>
     </Page.TopAppBar>
@@ -32,11 +46,11 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid>
-                <TextBox x:Name="textBox" TextWrapping="Wrap" Text="Search for Notes..." VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10"/>
-                <ListView x:Name="listView" Margin="0,56,0,0" BorderThickness="2"/>
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10" PlaceholderText="Search for Notes..."/>
+                <ListView x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}"/>
             </Grid>
             <Grid Grid.Column="1">
-                <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="TextBox"/>
+                <TextBox x:Name="textBox1" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"/>
             </Grid>
         </Grid>
 

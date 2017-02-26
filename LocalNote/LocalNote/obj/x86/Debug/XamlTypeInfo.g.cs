@@ -132,15 +132,27 @@ namespace LocalNote.LocalNote_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[3];
-            _typeNameTable[0] = "LocalNote.MainPage";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable = new string[9];
+            _typeNameTable[0] = "LocalNote.MainPageData";
+            _typeNameTable[1] = "Object";
+            _typeNameTable[2] = "String";
+            _typeNameTable[3] = "System.Collections.ObjectModel.ObservableCollection`1<LocalNote.NotesModel>";
+            _typeNameTable[4] = "System.Collections.ObjectModel.Collection`1<LocalNote.NotesModel>";
+            _typeNameTable[5] = "LocalNote.NotesModel";
+            _typeNameTable[6] = "LocalNote.MainPage";
+            _typeNameTable[7] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[8] = "Windows.UI.Xaml.Controls.UserControl";
 
-            _typeTable = new global::System.Type[3];
-            _typeTable[0] = typeof(global::LocalNote.MainPage);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable = new global::System.Type[9];
+            _typeTable[0] = typeof(global::LocalNote.MainPageData);
+            _typeTable[1] = typeof(global::System.Object);
+            _typeTable[2] = typeof(global::System.String);
+            _typeTable[3] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::LocalNote.NotesModel>);
+            _typeTable[4] = typeof(global::System.Collections.ObjectModel.Collection<global::LocalNote.NotesModel>);
+            _typeTable[5] = typeof(global::LocalNote.NotesModel);
+            _typeTable[6] = typeof(global::LocalNote.MainPage);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -175,7 +187,22 @@ namespace LocalNote.LocalNote_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::LocalNote.MainPage(); }
+        private object Activate_0_MainPageData() { return new global::LocalNote.MainPageData(); }
+        private object Activate_3_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::LocalNote.NotesModel>(); }
+        private object Activate_4_Collection() { return new global::System.Collections.ObjectModel.Collection<global::LocalNote.NotesModel>(); }
+        private object Activate_6_MainPage() { return new global::LocalNote.MainPage(); }
+        private void VectorAdd_3_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::LocalNote.NotesModel>)instance;
+            var newItem = (global::LocalNote.NotesModel)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_4_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::LocalNote.NotesModel>)instance;
+            var newItem = (global::LocalNote.NotesModel)item;
+            collection.Add(newItem);
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -187,18 +214,59 @@ namespace LocalNote.LocalNote_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  LocalNote.MainPage
-                userType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+            case 0:   //  LocalNote.MainPageData
+                userType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_0_MainPageData;
+                userType.AddMemberName("TestString");
+                userType.AddMemberName("Notes");
+                userType.AddMemberName("SelectedNote");
+                userType.AddMemberName("Filter");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Windows.UI.Xaml.Controls.Page
+            case 1:   //  Object
                 xamlType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  Windows.UI.Xaml.Controls.UserControl
+            case 2:   //  String
+                xamlType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 3:   //  System.Collections.ObjectModel.ObservableCollection`1<LocalNote.NotesModel>
+                userType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<LocalNote.NotesModel>"));
+                userType.CollectionAdd = VectorAdd_3_ObservableCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 4:   //  System.Collections.ObjectModel.Collection`1<LocalNote.NotesModel>
+                userType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_4_Collection;
+                userType.CollectionAdd = VectorAdd_4_Collection;
+                xamlType = userType;
+                break;
+
+            case 5:   //  LocalNote.NotesModel
+                userType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("Title");
+                userType.AddMemberName("Body");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 6:   //  LocalNote.MainPage
+                userType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_6_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 7:   //  Windows.UI.Xaml.Controls.Page
+                xamlType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 8:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::LocalNote.LocalNote_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -206,11 +274,111 @@ namespace LocalNote.LocalNote_XamlTypeInfo
         }
 
 
+        private object get_0_MainPageData_TestString(object instance)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            return that.TestString;
+        }
+        private void set_0_MainPageData_TestString(object instance, object Value)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            that.TestString = (global::System.String)Value;
+        }
+        private object get_1_MainPageData_Notes(object instance)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            return that.Notes;
+        }
+        private void set_1_MainPageData_Notes(object instance, object Value)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            that.Notes = (global::System.Collections.ObjectModel.ObservableCollection<global::LocalNote.NotesModel>)Value;
+        }
+        private object get_2_NotesModel_Title(object instance)
+        {
+            var that = (global::LocalNote.NotesModel)instance;
+            return that.Title;
+        }
+        private void set_2_NotesModel_Title(object instance, object Value)
+        {
+            var that = (global::LocalNote.NotesModel)instance;
+            that.Title = (global::System.String)Value;
+        }
+        private object get_3_NotesModel_Body(object instance)
+        {
+            var that = (global::LocalNote.NotesModel)instance;
+            return that.Body;
+        }
+        private void set_3_NotesModel_Body(object instance, object Value)
+        {
+            var that = (global::LocalNote.NotesModel)instance;
+            that.Body = (global::System.String)Value;
+        }
+        private object get_4_MainPageData_SelectedNote(object instance)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            return that.SelectedNote;
+        }
+        private void set_4_MainPageData_SelectedNote(object instance, object Value)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            that.SelectedNote = (global::LocalNote.NotesModel)Value;
+        }
+        private object get_5_MainPageData_Filter(object instance)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            return that.Filter;
+        }
+        private void set_5_MainPageData_Filter(object instance, object Value)
+        {
+            var that = (global::LocalNote.MainPageData)instance;
+            that.Filter = (global::System.String)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::LocalNote.LocalNote_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "LocalNote.MainPageData.TestString":
+                userType = (global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LocalNote.MainPageData");
+                xamlMember = new global::LocalNote.LocalNote_XamlTypeInfo.XamlMember(this, "TestString", "String");
+                xamlMember.Getter = get_0_MainPageData_TestString;
+                xamlMember.Setter = set_0_MainPageData_TestString;
+                break;
+            case "LocalNote.MainPageData.Notes":
+                userType = (global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LocalNote.MainPageData");
+                xamlMember = new global::LocalNote.LocalNote_XamlTypeInfo.XamlMember(this, "Notes", "System.Collections.ObjectModel.ObservableCollection`1<LocalNote.NotesModel>");
+                xamlMember.Getter = get_1_MainPageData_Notes;
+                xamlMember.Setter = set_1_MainPageData_Notes;
+                break;
+            case "LocalNote.NotesModel.Title":
+                userType = (global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LocalNote.NotesModel");
+                xamlMember = new global::LocalNote.LocalNote_XamlTypeInfo.XamlMember(this, "Title", "String");
+                xamlMember.Getter = get_2_NotesModel_Title;
+                xamlMember.Setter = set_2_NotesModel_Title;
+                break;
+            case "LocalNote.NotesModel.Body":
+                userType = (global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LocalNote.NotesModel");
+                xamlMember = new global::LocalNote.LocalNote_XamlTypeInfo.XamlMember(this, "Body", "String");
+                xamlMember.Getter = get_3_NotesModel_Body;
+                xamlMember.Setter = set_3_NotesModel_Body;
+                break;
+            case "LocalNote.MainPageData.SelectedNote":
+                userType = (global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LocalNote.MainPageData");
+                xamlMember = new global::LocalNote.LocalNote_XamlTypeInfo.XamlMember(this, "SelectedNote", "LocalNote.NotesModel");
+                xamlMember.Getter = get_4_MainPageData_SelectedNote;
+                xamlMember.Setter = set_4_MainPageData_SelectedNote;
+                break;
+            case "LocalNote.MainPageData.Filter":
+                userType = (global::LocalNote.LocalNote_XamlTypeInfo.XamlUserType)GetXamlTypeByName("LocalNote.MainPageData");
+                xamlMember = new global::LocalNote.LocalNote_XamlTypeInfo.XamlMember(this, "Filter", "String");
+                xamlMember.Getter = get_5_MainPageData_Filter;
+                xamlMember.Setter = set_5_MainPageData_Filter;
+                break;
+            }
             return xamlMember;
         }
     }

@@ -37,7 +37,6 @@ namespace LocalNote
         private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
 
-
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
