@@ -1,0 +1,7 @@
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\bin\Debug\StringCalculatorTest.dll
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\bin\Debug\StringCalculatorTest.pdb
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\bin\Debug\SeanStringCalculatorTestProject.exe
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\bin\Debug\SeanStringCalculatorTestProject.pdb
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\obj\Debug\StringCalculatorTest.csprojResolveAssemblyReference.cache
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\obj\Debug\StringCalculatorTest.dll
+C:\Users\Sean\Desktop\New folder (2)\Ryall-Sean-w0293490\SeanStringCalculatorTestProject\StringCalculatorTest\obj\Debug\StringCalculatorTest.pdb
