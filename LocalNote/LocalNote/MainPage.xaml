@@ -43,7 +43,6 @@
             <CommandBar.Content>
                 <TextBlock Text="{Binding NoteName, Mode=TwoWay}"
                            Margin="12,14">
-                    
                 </TextBlock>
             </CommandBar.Content>
         </CommandBar>
@@ -62,7 +61,8 @@
             </Grid>
             <Grid Grid.Column="1">
                 <TextBox x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"
-                         IsReadOnly="True" />
+                         IsReadOnly="True"
+                         AcceptsReturn="True" />
             </Grid>
         </Grid>
 
