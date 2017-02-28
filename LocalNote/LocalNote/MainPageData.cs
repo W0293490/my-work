@@ -12,7 +12,7 @@ namespace LocalNote
     {
         private string _testString = "No Note Selected";
 
-        private List<NotesModel> _allNotes = new List<NotesModel>();
+        public List<NotesModel> _allNotes = new List<NotesModel>();
 
         public string TestString
         {
@@ -36,12 +36,12 @@ namespace LocalNote
         {
             Notes = new ObservableCollection<NotesModel>();
 
-            Notes.Add(new NotesModel("First Note", "This is the body of the first note..."));
+            Notes.Add(new NotesModel("First Note", "This is the body of the first note...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dui est, placerat ac nulla et, semper blandit enim. Sed scelerisque scelerisque velit, quis scelerisque sem euismod quis. Suspendisse viverra tincidunt orci, non vehicula metus tincidunt eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec facilisis at enim non aliquam. Vivamus tincidunt ligula felis, in interdum urna semper id. Maecenas est nisi, sagittis sed vestibulum vitae, condimentum sed diam. Donec tristique condimentum est nec convallis. Aenean accumsan dolor ultricies turpis dapibus, molestie vestibulum nisi venenatis. Nulla ut magna facilisis, commodo diam quis, iaculis ante. "));
             Notes.Add(new NotesModel("Second Note", "This is the body of the second note..."));
             Notes.Add(new NotesModel("Third Note", "This is the body of the 3rd note..."));
             Notes.Add(new NotesModel("Fourth Note", "This is the body of note four..."));
 
-            _allNotes.Add(new NotesModel("First Note", "This is the body of the first note..."));
+            _allNotes.Add(new NotesModel("First Note", "This is the body of the first note...\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dui est, placerat ac nulla et, semper blandit enim. Sed scelerisque scelerisque velit, quis scelerisque sem euismod quis. Suspendisse viverra tincidunt orci, non vehicula metus tincidunt eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec facilisis at enim non aliquam. Vivamus tincidunt ligula felis, in interdum urna semper id. Maecenas est nisi, sagittis sed vestibulum vitae, condimentum sed diam. Donec tristique condimentum est nec convallis. Aenean accumsan dolor ultricies turpis dapibus, molestie vestibulum nisi venenatis. Nulla ut magna facilisis, commodo diam quis, iaculis ante. "));
             _allNotes.Add(new NotesModel("Second Note", "This is the body of the second note..."));
             _allNotes.Add(new NotesModel("Third Note", "This is the body of the 3rd note..."));
             _allNotes.Add(new NotesModel("Fourth Note", "This is the body of note four..."));
@@ -49,7 +49,7 @@ namespace LocalNote
             PerformFiltering();
         }
 
-        private NotesModel _selectedNote;
+        public NotesModel _selectedNote;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

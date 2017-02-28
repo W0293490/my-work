@@ -28,7 +28,7 @@ namespace LocalNote
 
         //bool editing = false;
         MainPageData mpd = new MainPageData();
-        
+        string SaveName;
 
         public MainPage()
         {
@@ -55,9 +55,23 @@ namespace LocalNote
             //dlg.ShowAsync();
         }
 
+
+        //dialog for trying to save with already chosen name...
+        private async void SameNameSaveMessage()
+        {
+            ContentDialog sameName = new ContentDialog()
+            {
+                Title = "HEYYYYYY!!:",
+                Content = "Please choose a name that has not already been used...",
+                PrimaryButtonText = "Ok"
+            };
+
+            ContentDialogResult result = await sameName.ShowAsync();
+        }
+
         private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            var txtBox = new TextBox { Width = 200, Height = 10};
+            var saveTextBox = new TextBox { Width = 200, Height = 10};
             AbbSave.IsEnabled = true;
             string body = textBoxBody.Text;
 
@@ -65,18 +79,39 @@ namespace LocalNote
             {
                 Title = "Save As...",
                 //Content = "Are you sure you want to save the current note?",
-                Content = txtBox,
+                Content = saveTextBox,
                 PrimaryButtonText = "Save",
                 SecondaryButtonText = "Cancel"
+
+
             };
 
             ContentDialogResult result = await saveFileDialog.ShowAsync();
 
             if (result == ContentDialogResult.Primary)
             {
-                //Application.Current.Exit();
-                mpd.Notes.Add(new NotesModel("Fifth Note", body));
+                SaveName = saveTextBox.Text;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (SaveName == mpd.Notes[i].Title)
+                    //if (SaveName == "poo")
+                    {
+                        //Application.Current.Exit();
+                        SameNameSaveMessage();
+                        return;
+
+                    }
+                    else
+                        mpd.Notes.Add(new NotesModel(SaveName, body));
+                }
+
             }
+
+            //if (result == ContentDialogResult.Primary)
+            //{
+            //    //Application.Current.Exit();
+            //    mpd._allNotes.Add(new NotesModel("Fifth Note", body));
+            //}
 
             
         }
@@ -124,6 +159,7 @@ namespace LocalNote
         {
             AbbEdit.IsEnabled = false;
             textBoxBody.IsReadOnly = false;
+            AbbSave.IsEnabled = true;
 
             //editing = true;
             ////textBoxBody.IsReadOnly = false;
@@ -157,14 +193,16 @@ namespace LocalNote
 
             if (result == ContentDialogResult.Primary)
             {
-                //Application.Current.Exit();
+                mpd.Notes.RemoveAt(listView.SelectedIndex);
+                listView.SelectedItems.Clear();
+                textBoxBody.Text = "";
             }
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AbbEdit.IsEnabled = true;
-            AbbSave.IsEnabled = true;
+            AbbSave.IsEnabled = false;
             AbbDel.IsEnabled = true;
             textBoxBody.IsReadOnly = true;
             if (listView.SelectedItem == null)
