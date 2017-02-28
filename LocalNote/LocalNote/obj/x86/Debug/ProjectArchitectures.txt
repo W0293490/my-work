@@ -1,1 +1,1 @@
-c:\users\nscc student\documents\visual studio 2015\Projects\LocalNote\LocalNote\LocalNote.csproj;x86
+C:\Users\Sean\Desktop\myWork repo feb 26 17\my-work\LocalNote\LocalNote\LocalNote.csproj;x86

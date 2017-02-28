@@ -17,16 +17,27 @@
         <local:MainPageData/>
     </Page.DataContext>
     <Page.TopAppBar>
-        <CommandBar>
-            <AppBarButton Icon="Add" Label="Add" Click="Add_Click"/>
-            <AppBarButton Icon="Save" Label="Save" Click="Save_Click"/>
-            <AppBarButton Icon="Edit" Label="Edit"/>
+        <CommandBar Background="#FFFFDE6D">
+            <AppBarButton x:Name="AbbAdd"
+                          Icon="Add" Label="Add" Click="AppBarButton_Click"/>
+            <AppBarButton x:Name="AbbSave"
+                          Icon="Save" Label="Save" Click="AppBarButton_Click_1"
+                          IsEnabled="False" />
+            <AppBarButton x:Name="AbbEdit"
+                          Icon="Edit" Label="Edit"
+                          Click="AbbEdit_Click"
+                          IsEnabled="False" />
             <AppBarSeparator/>
-            <AppBarButton Icon="Delete" Label="Delete"/>
+            <AppBarButton x:Name="AbbDel"
+                          Icon="Delete" Label="Delete"
+                          Click="AbbDel_Click"
+                          IsEnabled="False" />
 
             <CommandBar.SecondaryCommands>
-                <AppBarButton Label="About" Click="About_Click"/>
-                <AppBarButton Label="Exit" />
+                <AppBarButton x:Name="AbbAbout"
+                              Label="About" Click="About_Click"/>
+                <AppBarButton x:Name="AbbExit"
+                              Label="Exit" Click="AbbExit_Click" />
             </CommandBar.SecondaryCommands>
 
             <CommandBar.Content>
@@ -47,10 +58,13 @@
             </Grid.ColumnDefinitions>
             <Grid>
                 <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10" PlaceholderText="Search for Notes..."/>
-                <ListView x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" SelectionMode="Extended"/>
+                <ListView x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" SelectionMode="Extended"
+                          SelectionChanged="listView_SelectionChanged" />
             </Grid>
             <Grid Grid.Column="1">
-                <TextBox x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"/>
+                <TextBox x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"
+                         IsReadOnly="True"
+                         AcceptsReturn="True" />
             </Grid>
         </Grid>
 

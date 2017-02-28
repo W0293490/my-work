@@ -66,7 +66,7 @@ namespace LocalNote
                 }
                 else
                 {
-                    TestString = "Current Note Is: " + value.Title;
+                    TestString = value.Body;
                 }
             }
         }
