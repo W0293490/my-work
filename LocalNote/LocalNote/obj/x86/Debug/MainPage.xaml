@@ -41,10 +41,9 @@
             </CommandBar.SecondaryCommands>
 
             <CommandBar.Content>
-                <TextBlock Text="{Binding TestString, Mode=TwoWay}" Margin="12,14">
-                    <TextBlock.DataContext>
-                        <local:MainPageData/>
-                    </TextBlock.DataContext>
+                <TextBlock Text="{Binding NoteName, Mode=TwoWay}"
+                           Margin="12,14">
+                    
                 </TextBlock>
             </CommandBar.Content>
         </CommandBar>
@@ -63,8 +62,7 @@
             </Grid>
             <Grid Grid.Column="1">
                 <TextBox x:ConnectionId='7' x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"
-                         IsReadOnly="True"
-                         AcceptsReturn="True" />
+                         IsReadOnly="True" />
             </Grid>
         </Grid>
 

@@ -11,6 +11,7 @@ namespace LocalNote
     class MainPageData : INotifyPropertyChanged
     {
         private string _testString = "No Note Selected";
+        private string _noteName = "No Note Selected";
 
         public List<NotesModel> _allNotes = new List<NotesModel>();
 
@@ -27,6 +28,22 @@ namespace LocalNote
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TestString)));
                 
+            }
+        }
+
+        public string NoteName
+        {
+            get { return _noteName; }
+            set
+            {
+                if (value == _noteName)
+                {
+                    return;
+                }
+                _noteName = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NoteName)));
+
             }
         }
 
@@ -63,10 +80,12 @@ namespace LocalNote
                 if (value == null)
                 {
                     TestString = "No Note Selected";
+                    NoteName = "No Note Selected";
                 }
                 else
                 {
                     TestString = value.Body;
+                    NoteName = "Current Note: " + value.Title;
                 }
             }
         }

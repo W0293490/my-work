@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Sean\Desktop\myWork repo feb 26 17\my-work\LocalNote\LocalNote\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-02-28T16:20:37.871</Modified>
+      <Modified>2017-02-28T17:27:09.251</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\myWork repo feb 26 17\my-work\LocalNote\LocalNote\bin\x86\Debug\LocalNote.exe">
       <PackagePath>entrypoint\LocalNote.exe</PackagePath>
-      <Modified>2017-02-28T16:20:37.408</Modified>
+      <Modified>2017-02-28T17:27:08.508</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -518,7 +518,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\myWork repo feb 26 17\my-work\LocalNote\LocalNote\bin\x86\Debug\LocalNote.xr.xml">
       <PackagePath>LocalNote.xr.xml</PackagePath>
-      <Modified>2017-02-26T20:49:11.240</Modified>
+      <Modified>2017-02-28T17:26:02.842</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -526,11 +526,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\myWork repo feb 26 17\my-work\LocalNote\LocalNote\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-02-26T23:40:57.928</Modified>
+      <Modified>2017-02-28T17:27:09.018</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\myWork repo feb 26 17\my-work\LocalNote\LocalNote\bin\x86\Debug\Core\LocalNote.exe">
       <PackagePath>LocalNote.exe</PackagePath>
-      <Modified>2017-02-28T16:20:37.865</Modified>
+      <Modified>2017-02-28T17:27:09.248</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
