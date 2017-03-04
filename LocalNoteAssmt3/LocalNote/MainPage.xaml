@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="LocalNote.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LocalNote"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="NotesModelTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Title}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.DataContext>
+        <local:MainPageData/>
+    </Page.DataContext>
+    <Page.TopAppBar>
+        <CommandBar Background="#FFFFDE6D">
+            <AppBarButton x:Name="AbbAdd"
+                          Icon="Add" Label="Add" Click="AbbAdd_Click"/>
+            <AppBarButton x:Name="AbbSave"
+                          Icon="Save" Label="Save" Click="AppBarButton_Click_1"
+                          IsEnabled="False" />
+            <AppBarButton x:Name="AbbEdit"
+                          Icon="Edit" Label="Edit"
+                          Click="AbbEdit_Click"
+                          IsEnabled="False" />
+            <AppBarSeparator/>
+            <AppBarButton x:Name="AbbDel"
+                          Icon="Delete" Label="Delete"
+                          Click="AbbDel_Click"
+                          IsEnabled="False" />
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Name="AbbAbout"
+                              Label="About" Click="About_Click"/>
+                <AppBarButton x:Name="AbbExit"
+                              Label="Exit" Click="AbbExit_Click" />
+            </CommandBar.SecondaryCommands>
+
+            <CommandBar.Content>
+                <TextBlock Text="{Binding NoteName, Mode=TwoWay}"
+                           Margin="12,14">
+                </TextBlock>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid BorderThickness="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10" PlaceholderText="Search for Notes..."/>
+                <ListView x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" SelectionMode="Extended"
+                          SelectionChanged="listView_SelectionChanged" />
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"
+                         IsReadOnly="True"
+                         AcceptsReturn="True" />
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Page>
