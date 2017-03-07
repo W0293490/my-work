@@ -21,7 +21,7 @@
             <AppBarButton x:Name="AbbAdd"
                           Icon="Add" Label="Add" Click="AbbAdd_Click"/>
             <AppBarButton x:Name="AbbSave"
-                          Icon="Save" Label="Save" Click="AbbSave_Click"
+                          Icon="Save" Label="Save" Click="AppBarButton_Click_1"
                           IsEnabled="False" />
             <AppBarButton x:Name="AbbEdit"
                           Icon="Edit" Label="Edit"

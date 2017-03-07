@@ -61,12 +61,13 @@ namespace LocalNote
             ContentDialogResult result = await sameName.ShowAsync();
         }
 
-        public async void AbbSave_Click(object sender, RoutedEventArgs e)
+        public async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
             
             var saveTextBox = new TextBox { Width = 200, Height = 10};
             AbbSave.IsEnabled = true;
             body = textBoxBody.Text;
+            string currentTitle = mpd.Notes[listView.SelectedIndex].Title;
 
             if (listView.SelectedItem != null)
             {
@@ -91,6 +92,13 @@ namespace LocalNote
 
                     await storageFolder.GetFileAsync(title);
                     await Windows.Storage.FileIO.WriteTextAsync(sampleFile, body);
+
+                    mpd.Notes[listView.SelectedIndex].Body = body;
+
+                    //mpd.Notes.RemoveAt(listView.SelectedIndex);
+
+                    DataContext = mpd;
+
                 }
             }
             else

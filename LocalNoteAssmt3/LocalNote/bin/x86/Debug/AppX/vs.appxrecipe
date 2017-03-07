@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-07T14:12:29.297</Modified>
+      <Modified>2017-03-07T14:29:58.467</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\LocalNote.exe">
       <PackagePath>entrypoint\LocalNote.exe</PackagePath>
-      <Modified>2017-03-07T14:12:28.161</Modified>
+      <Modified>2017-03-07T14:29:58.209</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -526,11 +526,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2017-03-07T14:12:29.024</Modified>
+      <Modified>2017-03-07T14:27:28.268</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\Core\LocalNote.exe">
       <PackagePath>LocalNote.exe</PackagePath>
-      <Modified>2017-03-07T14:12:29.290</Modified>
+      <Modified>2017-03-07T14:29:58.462</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

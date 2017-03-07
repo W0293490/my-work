@@ -21,7 +21,7 @@
             <AppBarButton x:ConnectionId='1' x:Name="AbbAdd"
                           Icon="Add" Label="Add"                     />
             <AppBarButton x:ConnectionId='2' x:Name="AbbSave"
-                          Icon="Save" Label="Save"                      
+                          Icon="Save" Label="Save"                             
                           IsEnabled="False" />
             <AppBarButton x:ConnectionId='3' x:Name="AbbEdit"
                           Icon="Edit" Label="Edit"

@@ -100,5 +100,17 @@ namespace NotesTest
                 Assert.AreEqual(null, text, "Body not deleted...");
             }
         }
+
+
+
+        [TestMethod]
+        public void Test5EditBody()//tests editing body of note
+        {
+            mpd.Notes.Add(new NotesModel("title", "body"));
+
+            mpd.Notes[0].Body = "booty";
+
+            Assert.AreEqual("booty", mpd.Notes[0].Body, "Name not the same...");
+        }
     }
 }
