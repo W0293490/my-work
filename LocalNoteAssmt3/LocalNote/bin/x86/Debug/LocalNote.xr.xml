@@ -3,7 +3,7 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Title" />
     <RootPropertyPathName Name="NoteName" />
-    <RootPropertyPathName Name="TestString" />
+    <RootPropertyPathName Name="NoteBody" />
     <RootPropertyPathName Name="Notes" />
     <RootPropertyPathName Name="SelectedNote" />
     <RootPropertyPathName Name="Filter" />

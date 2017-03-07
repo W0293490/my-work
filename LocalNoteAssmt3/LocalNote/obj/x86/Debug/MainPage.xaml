@@ -56,11 +56,13 @@
             </Grid.ColumnDefinitions>
             <Grid>
                 <TextBox x:ConnectionId='8' x:Name="textBox" TextWrapping="Wrap" Text="{Binding Filter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="56" d:LayoutOverrides="LeftPosition, RightPosition" Foreground="#FF343434" BorderThickness="10" PlaceholderText="Search for Notes..."/>
-                <ListView x:ConnectionId='9' x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}" ItemsSource="{Binding Notes}" Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" SelectionMode="Extended"
+                <ListView x:ConnectionId='9' x:Name="listView" BorderThickness="2" ItemTemplate="{StaticResource NotesModelTemplate}"
+                          ItemsSource="{Binding Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          Margin="0,54,0,0" SelectedItem="{Binding SelectedNote, Mode=TwoWay}" SelectionMode="Extended"
                                                                        />
             </Grid>
             <Grid Grid.Column="1">
-                <TextBox x:ConnectionId='7' x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding TestString, Mode=TwoWay}"
+                <TextBox x:ConnectionId='7' x:Name="textBoxBody" TextWrapping="Wrap" Text="{Binding NoteBody, Mode=TwoWay}"
                          IsReadOnly="True"
                          AcceptsReturn="True" />
             </Grid>

@@ -12,8 +12,13 @@ namespace LocalNote
     {
         private string _testString = "No Note Selected";
         private string _noteName = "No Note Selected";
+        private string _noteBody = "";
+        public ObservableCollection<NotesModel> Notes { get; set; }
 
-        public List<NotesModel> _allNotes = new List<NotesModel>();
+        public ObservableCollection<NotesModel> _allNotes { get; set; }
+        
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string TestString
         {
@@ -28,6 +33,22 @@ namespace LocalNote
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TestString)));
                 
+            }
+        }
+
+        public string NoteBody
+        {
+            get { return _noteBody; }
+            set
+            {
+                if (value == _noteBody)
+                {
+                    return;
+                }
+                _noteBody = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NoteBody)));
+
             }
         }
 
@@ -47,7 +68,7 @@ namespace LocalNote
             }
         }
 
-        public ObservableCollection<NotesModel> Notes { get; set; }
+        
 
         public async void fillList()
         {
@@ -76,25 +97,14 @@ namespace LocalNote
 
             fillList();
 
-        //Notes.Add(new NotesModel("First Note", "This is the body of the first note...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dui est, placerat ac nulla et, semper blandit enim. Sed scelerisque scelerisque velit, quis scelerisque sem euismod quis. Suspendisse viverra tincidunt orci, non vehicula metus tincidunt eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec facilisis at enim non aliquam. Vivamus tincidunt ligula felis, in interdum urna semper id. Maecenas est nisi, sagittis sed vestibulum vitae, condimentum sed diam. Donec tristique condimentum est nec convallis. Aenean accumsan dolor ultricies turpis dapibus, molestie vestibulum nisi venenatis. Nulla ut magna facilisis, commodo diam quis, iaculis ante. "));
-        //    Notes.Add(new NotesModel("Second Note", "This is the body of the second note..."));
-        //    Notes.Add(new NotesModel("Third Note", "This is the body of the 3rd note..."));
-        //    Notes.Add(new NotesModel("Fourth Note", "This is the body of note four..."));
-
-        //    _allNotes.Add(new NotesModel("First Note", "This is the body of the first note...\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dui est, placerat ac nulla et, semper blandit enim. Sed scelerisque scelerisque velit, quis scelerisque sem euismod quis. Suspendisse viverra tincidunt orci, non vehicula metus tincidunt eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec facilisis at enim non aliquam. Vivamus tincidunt ligula felis, in interdum urna semper id. Maecenas est nisi, sagittis sed vestibulum vitae, condimentum sed diam. Donec tristique condimentum est nec convallis. Aenean accumsan dolor ultricies turpis dapibus, molestie vestibulum nisi venenatis. Nulla ut magna facilisis, commodo diam quis, iaculis ante. "));
-        //    _allNotes.Add(new NotesModel("Second Note", "This is the body of the second note..."));
-        //    _allNotes.Add(new NotesModel("Third Note", "This is the body of the 3rd note..."));
-        //    _allNotes.Add(new NotesModel("Fourth Note", "This is the body of note four..."));
-
             PerformFiltering();
         }
 
         public NotesModel _selectedNote;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        
         public NotesModel SelectedNote
         {
+
             get { return _selectedNote; }
             set
             {
@@ -103,17 +113,20 @@ namespace LocalNote
                 if (value == null)
                 {
                     TestString = "No Note Selected";
+                    NoteBody = "No Note Selected";
                     NoteName = "No Note Selected";
                 }
                 else
                 {
-                    TestString = value.Body;
+                    NoteBody = value.Body;
                     NoteName = "Current Note: " + value.Title;
                 }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NoteBody)));
             }
         }
 
         private string _filter;
+
         public string Filter
         {
             get { return _filter; }
@@ -130,8 +143,10 @@ namespace LocalNote
                     
             }
         }
+
         private void PerformFiltering()
         {
+            _allNotes = new ObservableCollection<NotesModel>();
             if (_filter == null)
                 _filter = "";
 

@@ -42,17 +42,13 @@ namespace LocalNote
             
         }
 
-        //VariableSizedWrapGrid conDlg = new Windows.UI.Xaml.Controls.ContentDialog
-        //{
-        //    Title = "Cpntent Dialog",
-
-        //}
-
         private void AbbAdd_Click(object sender, RoutedEventArgs e)
         {
             listView.SelectedItems.Clear();
             textBoxBody.Text = "";
             textBoxBody.IsReadOnly = false;
+            AbbSave.IsEnabled = true;
+
 
 
             //var dlg = new Windows.UI.Popups.MessageDialog("Heyy");
@@ -127,9 +123,9 @@ namespace LocalNote
                 if (result == ContentDialogResult.Primary)
                 {
                     SaveName = saveTextBox.Text;
-                    for (int i = 0; i < mpd._allNotes.Count; i++)
+                    for (int i = 0; i < mpd.Notes.Count; i++)
                     {
-                        if (SaveName == mpd._allNotes[i].Title)
+                        if (SaveName == mpd.Notes[i].Title)
                         //if (SaveName == "poo")
                         {
                             //Application.Current.Exit();
@@ -140,7 +136,9 @@ namespace LocalNote
                     }
 
 
-                    mpd._allNotes.Add(new NotesModel(SaveName, body));
+                    mpd.Notes.Add(new NotesModel(SaveName, body));
+
+                    DataContext = mpd;
 
                     Windows.Storage.StorageFile sampleFile =
                         await storageFolder.CreateFileAsync(SaveName,
@@ -148,7 +146,7 @@ namespace LocalNote
 
 
                     await storageFolder.GetFileAsync(SaveName);
-                    await Windows.Storage.FileIO.WriteTextAsync(sampleFile, body);
+                    await FileIO.WriteTextAsync(sampleFile, body);
 
                 }
             }
@@ -205,7 +203,7 @@ namespace LocalNote
 
         private async void AbbDel_Click(object sender, RoutedEventArgs e)
         {
-            string title = mpd._allNotes[listView.SelectedIndex].Title;
+            string title = mpd.Notes[listView.SelectedIndex].Title;
             if (title != null)
             {
                 StorageFile sFile = await storageFolder.GetFileAsync(title);
@@ -222,11 +220,14 @@ namespace LocalNote
 
                 if (result == ContentDialogResult.Primary)
                 {
-                    mpd._allNotes.RemoveAt(listView.SelectedIndex);
+                    mpd.Notes.RemoveAt(listView.SelectedIndex);
+
+                    DataContext = mpd;
                     //listView.SelectedItems.Clear();
                     textBoxBody.Text = "";
 
                     await sFile.DeleteAsync();
+
                 }
             }
         }
