@@ -1,1 +1,1 @@
-C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\LocalNote.csproj;x86
+C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\LocalNote.csproj;x86

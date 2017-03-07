@@ -10,19 +10,19 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>030ec4e5-50d2-4f4c-8dea-444de5f272f3</PackageIdentityName>
     <PackageIdentityPublisher>CN=NSCC Student</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\bin\x86\Debug\LocalNote.exe">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\LocalNote.exe">
       <PackagePath>entrypoint\LocalNote.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sean\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
@@ -334,70 +334,70 @@
     <AppxPackagedFile Include="C:\Users\Sean\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-100.png">
       <PackagePath>Assets\BadgeLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-125.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-125.png">
       <PackagePath>Assets\BadgeLogo.scale-125.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-150.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-150.png">
       <PackagePath>Assets\BadgeLogo.scale-150.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-200.png">
       <PackagePath>Assets\BadgeLogo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-400.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\BadgeLogo.scale-400.png">
       <PackagePath>Assets\BadgeLogo.scale-400.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\Square44x44Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\Square44x44Logo.scale-100.png">
       <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\bin\x86\Debug\LocalNote.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\LocalNote.xr.xml">
       <PackagePath>LocalNote.xr.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sean\Desktop\LocalNoteAssmt3\LocalNote\bin\x86\Debug\Core\LocalNote.exe">
+    <AppxPackagedFile Include="C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\bin\x86\Debug\Core\LocalNote.exe">
       <PackagePath>LocalNote.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

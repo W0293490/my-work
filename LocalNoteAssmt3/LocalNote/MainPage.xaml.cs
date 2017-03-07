@@ -27,7 +27,6 @@ namespace LocalNote
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
         Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
 
         //bool editing = false;
@@ -38,27 +37,19 @@ namespace LocalNote
         public MainPage()
         {
             this.InitializeComponent();
-            
-            
         }
 
-        private void AbbAdd_Click(object sender, RoutedEventArgs e)
+        public void AbbAdd_Click(object sender, RoutedEventArgs e)
         {
             listView.SelectedItems.Clear();
             textBoxBody.Text = "";
             textBoxBody.IsReadOnly = false;
             AbbSave.IsEnabled = true;
-
-
-
-            //var dlg = new Windows.UI.Popups.MessageDialog("Heyy");
-
-            //dlg.ShowAsync();
         }
 
 
         //dialog for trying to save with already chosen name...
-        private async void SameNameSaveMessage()
+        public async void SameNameSaveMessage()
         {
             ContentDialog sameName = new ContentDialog()
             {
@@ -70,7 +61,7 @@ namespace LocalNote
             ContentDialogResult result = await sameName.ShowAsync();
         }
 
-        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        public async void AbbSave_Click(object sender, RoutedEventArgs e)
         {
             
             var saveTextBox = new TextBox { Width = 200, Height = 10};
@@ -86,8 +77,6 @@ namespace LocalNote
                     Content = "Are you sure you want to overwrite the current note?",
                     PrimaryButtonText = "Yes",
                     SecondaryButtonText = "Cancel"
-
-
                 };
 
                 ContentDialogResult result = await overwriteFileDialog.ShowAsync();
@@ -103,7 +92,6 @@ namespace LocalNote
                     await storageFolder.GetFileAsync(title);
                     await Windows.Storage.FileIO.WriteTextAsync(sampleFile, body);
                 }
-
             }
             else
             { 
@@ -114,8 +102,6 @@ namespace LocalNote
                 Content = saveTextBox,
                 PrimaryButtonText = "Save",
                 SecondaryButtonText = "Cancel"
-
-
             };
 
             ContentDialogResult result = await saveFileDialog.ShowAsync();
@@ -132,10 +118,8 @@ namespace LocalNote
                             SameNameSaveMessage();
                             return;
                         }
-
                     }
-
-
+                    
                     mpd.Notes.Add(new NotesModel(SaveName, body));
 
                     DataContext = mpd;
@@ -152,7 +136,7 @@ namespace LocalNote
             }
         }
 
-        private async void About_Click(object sender, RoutedEventArgs e)
+        public async void About_Click(object sender, RoutedEventArgs e)
         {
             ContentDialog devName = new ContentDialog()
             {
@@ -165,14 +149,8 @@ namespace LocalNote
         }
 
 
-    
-
-        private async void AbbExit_Click(object sender, RoutedEventArgs e)
+        public async void AbbExit_Click(object sender, RoutedEventArgs e)
         {
-
-            // Application.Current.Exit();
-
-
             ContentDialog exitAppDialog = new ContentDialog()
             {
                 Title = "Exit Confirmation",
@@ -191,17 +169,15 @@ namespace LocalNote
         }
 
 
-        private void AbbEdit_Click(object sender, RoutedEventArgs e)
+        public void AbbEdit_Click(object sender, RoutedEventArgs e)
         {
             //string title = mpd.Notes[listView.SelectedIndex].Title;
             AbbEdit.IsEnabled = false;
             textBoxBody.IsReadOnly = false;
             AbbSave.IsEnabled = true;
-            
-
         }
 
-        private async void AbbDel_Click(object sender, RoutedEventArgs e)
+        public async void AbbDel_Click(object sender, RoutedEventArgs e)
         {
             string title = mpd.Notes[listView.SelectedIndex].Title;
             if (title != null)
@@ -227,13 +203,12 @@ namespace LocalNote
                     textBoxBody.Text = "";
 
                     await sFile.DeleteAsync();
-
                 }
             }
         }
 
 
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AbbEdit.IsEnabled = true;
             AbbSave.IsEnabled = false;
@@ -247,8 +222,5 @@ namespace LocalNote
                 textBoxBody.IsReadOnly = false;
             }
         }
-
-        
-
     }
 }

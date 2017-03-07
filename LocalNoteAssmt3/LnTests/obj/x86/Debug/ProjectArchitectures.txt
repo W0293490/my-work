@@ -1,0 +1,2 @@
+C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LnTests\LnTests.csproj;x86
+C:\Users\Sean\Desktop\my-work\LocalNoteAssmt3\LocalNote\LocalNote.csproj;x86

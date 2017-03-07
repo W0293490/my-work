@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LocalNote
 {
-    class MainPageData : INotifyPropertyChanged
+    public class MainPageData : INotifyPropertyChanged
     {
         private string _testString = "No Note Selected";
         private string _noteName = "No Note Selected";
@@ -78,11 +78,6 @@ namespace LocalNote
 
             foreach (Windows.Storage.StorageFile file in files)
             {
-                //StringBuilder fileProperties = new StringBuilder();
-
-                // Get top-level file properties.
-                //fileProperties.AppendLine("File name: " + file.Name);
-                //fileProperties.AppendLine("File type: " + file.FileType);
                 string text = await Windows.Storage.FileIO.ReadTextAsync(file);
                 _allNotes.Add(new NotesModel(file.Name, text));
                 Notes.Add(new NotesModel(file.Name, text));
